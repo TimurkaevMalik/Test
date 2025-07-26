@@ -7,16 +7,30 @@
 
 import Foundation
 
+///Правильно ли я логирую ошибки? Не слишком много кода?
+
 final class DataPlistService: ResourceLoader, Sendable {
     
     private let decoder = PropertyListDecoder()
     
-    func load<T>(from resource: ResourceFile) async throws -> T
+    func load<T>(from id: ResourceID) async throws -> T
+    where T: Decodable & Sendable {
+        
+        switch id {
+        case .resource(let file):
+            return try await load(from: file)
+            
+        default:
+            throw ErrorPlistService.unsupportedResource
+        }
+    }
+    
+    private func load<T>(from file: ResourceFile) async throws -> T
     where T: Decodable & Sendable {
         
         return try await Task.detached(priority: .utility) {
             
-            guard let url = self.resolveURL(for: resource) else {
+            guard let url = self.resolveURL(for: file) else {
                 throw ErrorPlistService.fileNotFound
             }
             

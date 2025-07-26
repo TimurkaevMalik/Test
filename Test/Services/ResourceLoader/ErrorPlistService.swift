@@ -11,4 +11,5 @@ enum ErrorPlistService: Error {
     case fileNotFound
     case reading
     case decoding
+    case unsupportedResource
 }
