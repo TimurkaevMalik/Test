@@ -13,6 +13,15 @@
 		BC4888032E12D42D0076F21F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4887F82E12D42D0076F21F /* LaunchScreen.storyboard */; };
 		BC4888062E12D59E0076F21F /* ProductListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4888052E12D59E0076F21F /* ProductListController.swift */; };
 		BCDBF29A2E33E68C00CCDAA0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */; };
+		BCDBF29E2E33F04800CCDAA0 /* transactions.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29D2E33F04800CCDAA0 /* transactions.plist */; };
+		BCDBF29F2E33F04800CCDAA0 /* rates.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29C2E33F04800CCDAA0 /* rates.plist */; };
+		BCDBF2A32E33F3B300CCDAA0 /* RatesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2A22E33F39300CCDAA0 /* RatesRepository.swift */; };
+		BCDBF2A72E33F43400CCDAA0 /* RateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2A62E33F42B00CCDAA0 /* RateDTO.swift */; };
+		BCDBF2AA2E33F50600CCDAA0 /* DataPlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2A92E33F4EE00CCDAA0 /* DataPlistService.swift */; };
+		BCDBF2AE2E33F5E300CCDAA0 /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2AD2E33F5E300CCDAA0 /* ResourceLoader.swift */; };
+		BCDBF2B02E33FD3C00CCDAA0 /* ResourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2AF2E33FD3C00CCDAA0 /* ResourceFile.swift */; };
+		BCDBF2B42E34F09800CCDAA0 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2B32E34F09500CCDAA0 /* Rate.swift */; };
+		BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2B52E34F26900CCDAA0 /* ErrorPlistService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BC4888052E12D59E0076F21F /* ProductListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListController.swift; sourceTree = "<group>"; };
 		BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		BCDBF29C2E33F04800CCDAA0 /* rates.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rates.plist; sourceTree = "<group>"; };
+		BCDBF29D2E33F04800CCDAA0 /* transactions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = transactions.plist; sourceTree = "<group>"; };
+		BCDBF2A22E33F39300CCDAA0 /* RatesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesRepository.swift; sourceTree = "<group>"; };
+		BCDBF2A62E33F42B00CCDAA0 /* RateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateDTO.swift; sourceTree = "<group>"; };
+		BCDBF2A92E33F4EE00CCDAA0 /* DataPlistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPlistService.swift; sourceTree = "<group>"; };
+		BCDBF2AD2E33F5E300CCDAA0 /* ResourceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
+		BCDBF2AF2E33FD3C00CCDAA0 /* ResourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFile.swift; sourceTree = "<group>"; };
+		BCDBF2B32E34F09500CCDAA0 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		BCDBF2B52E34F26900CCDAA0 /* ErrorPlistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPlistService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +74,18 @@
 		BC4887FD2E12D42D0076F21F /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				BCDBF2A82E33F4E600CCDAA0 /* Services */,
+				BCDBF2A42E33F41400CCDAA0 /* Models */,
+				BCDBF2A12E33F37C00CCDAA0 /* Repositories */,
 				BCDBF2982E33E66F00CCDAA0 /* Coordinators */,
+				BCDBF2A02E33F35200CCDAA0 /* Controllers */,
 				BC4887F42E12D42D0076F21F /* AppDelegate.swift */,
 				BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */,
 				BC4887F52E12D42D0076F21F /* Assets.xcassets */,
 				BC4887F62E12D42D0076F21F /* Info.plist */,
+				BCDBF29C2E33F04800CCDAA0 /* rates.plist */,
+				BCDBF29D2E33F04800CCDAA0 /* transactions.plist */,
 				BC4887F82E12D42D0076F21F /* LaunchScreen.storyboard */,
-				BC4888052E12D59E0076F21F /* ProductListController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -73,6 +96,74 @@
 				BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BCDBF2A02E33F35200CCDAA0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC4888052E12D59E0076F21F /* ProductListController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BCDBF2A12E33F37C00CCDAA0 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2A22E33F39300CCDAA0 /* RatesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		BCDBF2A42E33F41400CCDAA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2A52E33F41C00CCDAA0 /* ModelsDTO */,
+				BCDBF2B22E34F08800CCDAA0 /* ModelsDomain */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BCDBF2A52E33F41C00CCDAA0 /* ModelsDTO */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2A62E33F42B00CCDAA0 /* RateDTO.swift */,
+			);
+			path = ModelsDTO;
+			sourceTree = "<group>";
+		};
+		BCDBF2A82E33F4E600CCDAA0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2AC2E33F5D100CCDAA0 /* ServiceProtocols */,
+				BCDBF2B12E33FD9700CCDAA0 /* ResourceLoader */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BCDBF2AC2E33F5D100CCDAA0 /* ServiceProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2AD2E33F5E300CCDAA0 /* ResourceLoader.swift */,
+			);
+			path = ServiceProtocols;
+			sourceTree = "<group>";
+		};
+		BCDBF2B12E33FD9700CCDAA0 /* ResourceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2B52E34F26900CCDAA0 /* ErrorPlistService.swift */,
+				BCDBF2AF2E33FD3C00CCDAA0 /* ResourceFile.swift */,
+				BCDBF2A92E33F4EE00CCDAA0 /* DataPlistService.swift */,
+			);
+			path = ResourceLoader;
+			sourceTree = "<group>";
+		};
+		BCDBF2B22E34F08800CCDAA0 /* ModelsDomain */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBF2B32E34F09500CCDAA0 /* Rate.swift */,
+			);
+			path = ModelsDomain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +229,8 @@
 			files = (
 				BC4888012E12D42D0076F21F /* Assets.xcassets in Resources */,
 				BC4888032E12D42D0076F21F /* LaunchScreen.storyboard in Resources */,
+				BCDBF29E2E33F04800CCDAA0 /* transactions.plist in Resources */,
+				BCDBF29F2E33F04800CCDAA0 /* rates.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,9 +242,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCDBF29A2E33E68C00CCDAA0 /* AppCoordinator.swift in Sources */,
+				BCDBF2AE2E33F5E300CCDAA0 /* ResourceLoader.swift in Sources */,
+				BCDBF2B02E33FD3C00CCDAA0 /* ResourceFile.swift in Sources */,
+				BCDBF2B42E34F09800CCDAA0 /* Rate.swift in Sources */,
+				BCDBF2A72E33F43400CCDAA0 /* RateDTO.swift in Sources */,
+				BCDBF2AA2E33F50600CCDAA0 /* DataPlistService.swift in Sources */,
 				BC4887FE2E12D42D0076F21F /* AppDelegate.swift in Sources */,
 				BC4887FF2E12D42D0076F21F /* SceneDelegate.swift in Sources */,
 				BC4888062E12D59E0076F21F /* ProductListController.swift in Sources */,
+				BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */,
+				BCDBF2A32E33F3B300CCDAA0 /* RatesRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
