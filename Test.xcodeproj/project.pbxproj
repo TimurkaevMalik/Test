@@ -22,6 +22,9 @@
 		BCDBF2B02E33FD3C00CCDAA0 /* ResourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2AF2E33FD3C00CCDAA0 /* ResourceFile.swift */; };
 		BCDBF2B42E34F09800CCDAA0 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2B32E34F09500CCDAA0 /* Rate.swift */; };
 		BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2B52E34F26900CCDAA0 /* ErrorPlistService.swift */; };
+		BCDBF2B82E34FF5000CCDAA0 /* TransactionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2B72E34FF4400CCDAA0 /* TransactionsRepository.swift */; };
+		BCDBF2BA2E34FFDB00CCDAA0 /* TransactionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2B92E34FFD200CCDAA0 /* TransactionDTO.swift */; };
+		BCDBF2BC2E35010300CCDAA0 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2BB2E35010300CCDAA0 /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		BCDBF2AF2E33FD3C00CCDAA0 /* ResourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFile.swift; sourceTree = "<group>"; };
 		BCDBF2B32E34F09500CCDAA0 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		BCDBF2B52E34F26900CCDAA0 /* ErrorPlistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPlistService.swift; sourceTree = "<group>"; };
+		BCDBF2B72E34FF4400CCDAA0 /* TransactionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsRepository.swift; sourceTree = "<group>"; };
+		BCDBF2B92E34FFD200CCDAA0 /* TransactionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDTO.swift; sourceTree = "<group>"; };
+		BCDBF2BB2E35010300CCDAA0 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		BCDBF2A12E33F37C00CCDAA0 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				BCDBF2B72E34FF4400CCDAA0 /* TransactionsRepository.swift */,
 				BCDBF2A22E33F39300CCDAA0 /* RatesRepository.swift */,
 			);
 			path = Repositories;
@@ -126,6 +133,7 @@
 		BCDBF2A52E33F41C00CCDAA0 /* ModelsDTO */ = {
 			isa = PBXGroup;
 			children = (
+				BCDBF2B92E34FFD200CCDAA0 /* TransactionDTO.swift */,
 				BCDBF2A62E33F42B00CCDAA0 /* RateDTO.swift */,
 			);
 			path = ModelsDTO;
@@ -161,6 +169,7 @@
 		BCDBF2B22E34F08800CCDAA0 /* ModelsDomain */ = {
 			isa = PBXGroup;
 			children = (
+				BCDBF2BB2E35010300CCDAA0 /* Transaction.swift */,
 				BCDBF2B32E34F09500CCDAA0 /* Rate.swift */,
 			);
 			path = ModelsDomain;
@@ -245,6 +254,9 @@
 				BCDBF2AE2E33F5E300CCDAA0 /* ResourceLoader.swift in Sources */,
 				BCDBF2B02E33FD3C00CCDAA0 /* ResourceFile.swift in Sources */,
 				BCDBF2B42E34F09800CCDAA0 /* Rate.swift in Sources */,
+				BCDBF2BC2E35010300CCDAA0 /* Transaction.swift in Sources */,
+				BCDBF2B82E34FF5000CCDAA0 /* TransactionsRepository.swift in Sources */,
+				BCDBF2BA2E34FFDB00CCDAA0 /* TransactionDTO.swift in Sources */,
 				BCDBF2A72E33F43400CCDAA0 /* RateDTO.swift in Sources */,
 				BCDBF2AA2E33F50600CCDAA0 /* DataPlistService.swift in Sources */,
 				BC4887FE2E12D42D0076F21F /* AppDelegate.swift in Sources */,

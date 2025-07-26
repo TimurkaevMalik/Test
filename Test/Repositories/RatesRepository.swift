@@ -11,20 +11,21 @@ protocol RatesRepositoryProtocol {
     func fetchRates() async throws -> [Rate]
 }
 
-final class RatesRepository: RatesRepositoryProtocol {
+final class PlistRatesRepository: RatesRepositoryProtocol {
     
-    private let loaderService: ResourceLoader
+    private let ratesService: ResourceLoader
+    private let resourceId: ResourceID
     
-    init(loaderService: ResourceLoader) {
-        self.loaderService = loaderService
+    init(ratesService: ResourceLoader) {
+        self.ratesService = ratesService
+        
+        let resourceFile = ResourceFile(name: .rates, fileExtension: .plist)
+        resourceId = ResourceID.resource(file: resourceFile)
     }
     
     func fetchRates() async throws -> [Rate] {
         
-        let resourceFile = ResourceFile(name: .rates,
-                                        fileExtension: .plist)
-        let data: [RateDTO] = try await loaderService.load(from: resourceFile)
-        
+        let data: [RateDTO] = try await ratesService.load(from: resourceId)
         return data.compactMap({ $0.toDomain() })
     }
 }
