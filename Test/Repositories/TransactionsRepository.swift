@@ -14,19 +14,17 @@ protocol TransactionsRepositoryProtocol {
 final class PlistTransactionsRepository: TransactionsRepositoryProtocol {
     
     private let transactionsService: ResourceLoader
-    private let resourceId: ResourceID
+    private let resource: ResourceFile
     
-    init(transactionsService: ResourceLoader) {
+    init(transactionsService: ResourceLoader,
+         resource: ResourceFile) {
         self.transactionsService = transactionsService
-        
-        let resourceFile = ResourceFile(name: .transactions,
-                                        fileExtension: .plist)
-        resourceId = ResourceID.resource(file: resourceFile)
+        self.resource = resource
     }
     
     func fetchTransactions() async throws -> [Transaction] {
         
-        let data: [TransactionDTO] = try await transactionsService.load(from: resourceId)
+        let data: [TransactionDTO] = try await transactionsService.load(from: resource)
         return data.compactMap({ $0.toDomain() })
     }
 }

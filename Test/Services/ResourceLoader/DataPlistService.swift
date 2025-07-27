@@ -11,26 +11,18 @@ import Foundation
 
 final class DataPlistService: ResourceLoader, Sendable {
     
-    private let decoder = PropertyListDecoder()
+    private let decoder: PropertyListDecoder
     
-    func load<T>(from id: ResourceID) async throws -> T
-    where T: Decodable & Sendable {
-        
-        switch id {
-        case .resource(let file):
-            return try await load(from: file)
-            
-        default:
-            throw ErrorPlistService.unsupportedResource
-        }
+    init(decoder: PropertyListDecoder = PropertyListDecoder()) {
+        self.decoder = decoder
     }
     
-    private func load<T>(from file: ResourceFile) async throws -> T
+    func load<T>(from resource: ResourceFile) async throws -> T
     where T: Decodable & Sendable {
         
-        return try await Task.detached(priority: .utility) {
+        try await Task.detached(priority: .utility) {
             
-            guard let url = self.resolveURL(for: file) else {
+            guard let url = self.resolveURL(for: resource) else {
                 throw ErrorPlistService.fileNotFound
             }
             

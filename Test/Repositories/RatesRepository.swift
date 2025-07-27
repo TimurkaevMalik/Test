@@ -14,18 +14,17 @@ protocol RatesRepositoryProtocol {
 final class PlistRatesRepository: RatesRepositoryProtocol {
     
     private let ratesService: ResourceLoader
-    private let resourceId: ResourceID
+    private let resource: ResourceFile
     
-    init(ratesService: ResourceLoader) {
+    init(ratesService: ResourceLoader,
+         resource: ResourceFile) {
         self.ratesService = ratesService
-        
-        let resourceFile = ResourceFile(name: .rates, fileExtension: .plist)
-        resourceId = ResourceID.resource(file: resourceFile)
+        self.resource = resource
     }
     
     func fetchRates() async throws -> [Rate] {
         
-        let data: [RateDTO] = try await ratesService.load(from: resourceId)
+        let data: [RateDTO] = try await ratesService.load(from: resource)
         return data.compactMap({ $0.toDomain() })
     }
 }
