@@ -9,5 +9,5 @@ import Foundation
 
 struct Product {
     let sku: String
-    let transaction: Transaction
+    let transactions: [Transaction]
 }

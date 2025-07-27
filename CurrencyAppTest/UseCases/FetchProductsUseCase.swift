@@ -7,11 +7,6 @@
 
 import Foundation
 
-//enum BaseCurrency: String {
-//    case usd = "USD"
-//    case gbp = "GBP"
-//}
-
 protocol ProductsFetchingUseCase {
     func fetchProducts() async throws -> [ProductItem]
 }
@@ -32,12 +27,36 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     }
     
     func fetchProducts() async throws -> [ProductItem] {
-        let products = try await productsRepository.fetchProducts()
+        let products: [Product] = try await productsRepository.fetchProducts()
         
         if converter.exchangeRates.isEmpty {
-            converter.exchangeRates = try await ratesRepository.fetchRates()
+            let rates = try await ratesRepository.fetchRates()
+            converter.setExchangeRates(rates)
         }
+   
+        let result = products.map({
+            
+            let transactions = getTransactionItems($0.transactions)
+            return ProductItem(sku: $0.sku,
+                               transactions: transactions)
+        })
         
-        return []
+        return result
+    }
+    
+    private func getTransactionItems(
+        _ transactions: [Transaction]
+    ) -> [TransactionItem] {
+        
+        return transactions.compactMap({
+            if let amountGBP = converter.convert(from: $0, to: "GBP") {
+                
+               return TransactionItem(initialCurrency: $0.currency,
+                                      initialAmount: String($0.amount),
+                                      amountGBP: String(amountGBP))
+            } else {
+                return nil
+            }
+        })
     }
 }

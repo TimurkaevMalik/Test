@@ -25,6 +25,16 @@ final class PlistProductsRepository: ProductsRepositoryProtocol {
     func fetchProducts() async throws -> [Product] {
         
         let data: [TransactionDTO] = try await productsService.load(from: resource)
-        return data.compactMap({ $0.toDomainProduct() })
+        
+        let reduced: [String:[Transaction]] = data.reduce(into: [:]) {
+            
+            if let amount = Double($1.amount) {
+                let transaction = Transaction(currency: $1.currency,
+                                              amount: amount)
+                $0[$1.sku, default: []].append(transaction)
+            }
+        }
+        
+        return reduced.map({ Product(sku: $0.key, transactions: $0.value) })
     }
 }

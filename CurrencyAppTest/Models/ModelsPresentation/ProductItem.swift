@@ -8,6 +8,6 @@
 import Foundation
 
 struct ProductItem {
-    let name: String
-    let transactions: [Transaction]
+    let sku: String
+    let transactions: [TransactionItem]
 }
