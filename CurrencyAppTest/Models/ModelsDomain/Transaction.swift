@@ -9,7 +9,6 @@
 import Foundation
 
 struct Transaction {
-    let amount: Double
     let currency: String
-    let sku: String
+    let amount: Double
 }

@@ -14,9 +14,11 @@ struct TransactionDTO: Decodable {
 }
 
 extension TransactionDTO {
-    func toDomain() -> Transaction? {
+    func toDomainProduct() -> Product? {
         if let amount = Double(amount) {
-            return Transaction(amount: amount, currency: currency, sku: sku)
+            return Product(sku: sku,
+                           transaction: Transaction(currency: currency,
+                                                    amount: amount))
         }
         
         return nil

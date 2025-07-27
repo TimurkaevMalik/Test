@@ -8,7 +8,6 @@
 import Foundation
 
 ///Правильно ли я логирую ошибки? Не слишком много кода?
-
 final class DataPlistService: ResourceLoader, Sendable {
     
     private let decoder: PropertyListDecoder

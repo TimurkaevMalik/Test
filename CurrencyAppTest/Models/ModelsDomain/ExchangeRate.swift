@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Rate {
+struct ExchangeRate {
     let rate: Float
     let from: String
     let to: String

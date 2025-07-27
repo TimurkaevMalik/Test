@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RatesRepositoryProtocol {
-    func fetchRates() async throws -> [Rate]
+    func fetchRates() async throws -> [ExchangeRate]
 }
 
 final class PlistRatesRepository: RatesRepositoryProtocol {
@@ -22,9 +22,9 @@ final class PlistRatesRepository: RatesRepositoryProtocol {
         self.resource = resource
     }
     
-    func fetchRates() async throws -> [Rate] {
+    func fetchRates() async throws -> [ExchangeRate] {
         
-        let data: [RateDTO] = try await ratesService.load(from: resource)
+        let data: [ExchangeRateDTO] = try await ratesService.load(from: resource)
         return data.compactMap({ $0.toDomain() })
     }
 }
