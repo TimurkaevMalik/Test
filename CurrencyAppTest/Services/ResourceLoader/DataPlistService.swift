@@ -10,11 +10,7 @@ import Foundation
 ///Правильно ли я логирую ошибки? Не слишком много кода?
 final class DataPlistService: ResourceLoader, Sendable {
     
-    private let decoder: PropertyListDecoder
-    
-    init(decoder: PropertyListDecoder = PropertyListDecoder()) {
-        self.decoder = decoder
-    }
+    private let decoder = PropertyListDecoder()
     
     func load<T>(from resource: ResourceFile) async throws -> T
     where T: Decodable & Sendable {

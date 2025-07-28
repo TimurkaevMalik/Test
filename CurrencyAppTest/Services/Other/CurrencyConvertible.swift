@@ -7,52 +7,70 @@
 
 import Foundation
 
-///Допустим ли такой нейминг протокола в этом конктесте
-protocol CurrencyConvertible: AnyObject {
-    var exchangeRates: [String: [ExchangeRate]] { get set }
-    
-    func setExchangeRates(_ rates: [ExchangeRate])
+///Допустим ли такой нейминг протокола в этом конктесте?
+///
+protocol CurrencyConvertible: Sendable {
+    mutating func setExchangeRates(_ rates: [ExchangeRate])
+    func hasRates() -> Bool
     func convert(from transaction: Transaction,
-                 to currency: String) -> Double?
+                 to targetCurrency: String) -> Double?
 }
 
-extension CurrencyConvertible {
-    func setExchangeRates(_ rates: [ExchangeRate]) {
-        exchangeRates = Dictionary(grouping: rates, by: \.from)
-    }
-}
-
-final class CurrencyConverter: CurrencyConvertible {
-    var exchangeRates: [String: [ExchangeRate]] = [:]
+struct CurrencyConverter: CurrencyConvertible {
+    private typealias From = String
+    private typealias To = String
+    private typealias Rate = Float
+    
+    private var exchangeRates: [From: [To: Rate]] = [:]
     
     init(exchangeRates: [ExchangeRate]) {
         setExchangeRates(exchangeRates)
     }
     
-    /// Конвертирует сумму из одной валюты в другую.
+        mutating func setExchangeRates(_ rates: [ExchangeRate]) {
+        exchangeRates = rates.reduce(into: [:], { result, rate in
+            result[rate.from, default: [:]][rate.to] = rate.rate
+        })
+    }
+    
+    func hasRates() -> Bool {
+        !exchangeRates.isEmpty
+    }
+    
+    /// Конвертирует сумму из одной валюты в другую, используя
+    /// прямой или кросс-курс.
     ///
-    /// **Сложность:
-    /// - В худшем случае O(n * m), где:
-    ///   - n = количество курсов для `transaction.currency`
-    ///   - m = количество курсов для промежуточной валюты (`rate.to`)
-    /// - Это линейный поиск по двум массивам внутри словаря.
+    /// - Note:
+    ///   Метод сначала пытается найти прямой курс между
+    ///   `transaction.currency` и `targetCurrency`.
+    ///   Если прямого курса нет, он ищет кросс-курс через
+    ///   промежуточную валюту:
+    ///   `transaction.currency → промежуточная → targetCurrency`.
+    ///
+    /// - Complexity:
+    ///   O(n), где `n` — количество доступных направлений конверсии из исходной валюты (`exchangeRates[from]`).
+    ///   Все операции внутри цикла (сравнение ключа, lookup вложенного словаря) выполняются за O(1).
+    ///
     func convert(from transaction: Transaction,
-                 to currency: String) -> Double? {
+                 to targetCurrency: String) -> Double? {
         
-        guard transaction.currency != currency else {
+        guard transaction.currency != targetCurrency else {
             return transaction.amount
         }
         
-        for rate in exchangeRates[transaction.currency] ?? [] {
+        let from = transaction.currency
+        
+        for (intermediateCurrency, directRate) in exchangeRates[from] ?? [:] {
             
-            if rate.to == currency {
+            if intermediateCurrency == targetCurrency {
                 
-                return transaction.amount * Double(rate.rate)
+                return transaction.amount * Double(directRate)
+            }
+            
+            if let finalRate = rate(from: intermediateCurrency,
+                                      to: targetCurrency) {
                 
-            } else if let bindingRate = bindingRate(of: rate,
-                                                    for: currency) {
-                
-                let crossRate = rate.rate * bindingRate.rate
+                let crossRate = directRate * finalRate
                 return transaction.amount * Double(crossRate)
             }
         }
@@ -60,15 +78,9 @@ final class CurrencyConverter: CurrencyConvertible {
         return nil
     }
     
-    private func bindingRate(of rate: ExchangeRate,
-                             for currency: String) -> ExchangeRate? {
+    /// - Complexity: O(1)
+    private func rate(from: From, to: To) -> Float? {
         
-        for element in exchangeRates[rate.to] ?? [] {
-            if element.to == currency {
-                return element
-            }
-        }
-        
-        return nil
+        return exchangeRates[from]?[to]
     }
 }

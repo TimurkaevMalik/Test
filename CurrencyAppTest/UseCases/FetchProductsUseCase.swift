@@ -15,7 +15,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     
     private let productsRepository: ProductsRepositoryProtocol
     private let ratesRepository: RatesRepositoryProtocol
-    private let converter: CurrencyConvertible
+    private var converter: CurrencyConvertible
     
     init(productsRepository: ProductsRepositoryProtocol,
          ratesRepository: RatesRepositoryProtocol,
@@ -29,7 +29,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     func fetchProducts() async throws -> [ProductItem] {
         let products: [Product] = try await productsRepository.fetchProducts()
         
-        if converter.exchangeRates.isEmpty {
+        if converter.hasRates() {
             let rates = try await ratesRepository.fetchRates()
             converter.setExchangeRates(rates)
         }
@@ -41,7 +41,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
                                transactions: transactions)
         })
         
-        return result
+        return []
     }
     
     private func getTransactionItems(
