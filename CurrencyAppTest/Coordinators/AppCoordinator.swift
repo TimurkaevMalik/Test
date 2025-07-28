@@ -26,7 +26,7 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showProductListController() {
-        let controller = ProductListController()
+        let controller = ProductItemsController()
         navigationController.pushViewController(controller, animated: true)
     }
 }

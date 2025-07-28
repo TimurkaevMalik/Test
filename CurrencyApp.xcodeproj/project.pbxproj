@@ -11,7 +11,8 @@
 		BC4887FF2E12D42D0076F21F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */; };
 		BC4888012E12D42D0076F21F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4887F52E12D42D0076F21F /* Assets.xcassets */; };
 		BC4888032E12D42D0076F21F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4887F82E12D42D0076F21F /* LaunchScreen.storyboard */; };
-		BC4888062E12D59E0076F21F /* ProductListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4888052E12D59E0076F21F /* ProductListController.swift */; };
+		BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4888052E12D59E0076F21F /* ProductItemsController.swift */; };
+		BCAD8ECF2E37EA5E00C9CCA5 /* ProductItemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */; };
 		BCDBF29A2E33E68C00CCDAA0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */; };
 		BCDBF29E2E33F04800CCDAA0 /* transactions.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29D2E33F04800CCDAA0 /* transactions.plist */; };
 		BCDBF29F2E33F04800CCDAA0 /* rates.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29C2E33F04800CCDAA0 /* rates.plist */; };
@@ -51,7 +52,8 @@
 		BC4887F62E12D42D0076F21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC4887F72E12D42D0076F21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BC4888052E12D59E0076F21F /* ProductListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListController.swift; sourceTree = "<group>"; };
+		BC4888052E12D59E0076F21F /* ProductItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsController.swift; sourceTree = "<group>"; };
+		BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsVM.swift; sourceTree = "<group>"; };
 		BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BCDBF29C2E33F04800CCDAA0 /* rates.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rates.plist; sourceTree = "<group>"; };
 		BCDBF29D2E33F04800CCDAA0 /* transactions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = transactions.plist; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				BCDBF2A42E33F41400CCDAA0 /* Models */,
 				BCDBF2A12E33F37C00CCDAA0 /* Repositories */,
 				BCDBF2BD2E36543400CCDAA0 /* UseCases */,
+				BCAD8ECD2E37EA4E00C9CCA5 /* ViewModels */,
 				BCDBF2982E33E66F00CCDAA0 /* Coordinators */,
 				BCDBF2A02E33F35200CCDAA0 /* Controllers */,
 				BC4887F42E12D42D0076F21F /* AppDelegate.swift */,
@@ -131,6 +134,14 @@
 			path = CurrencyAppTest;
 			sourceTree = "<group>";
 		};
+		BCAD8ECD2E37EA4E00C9CCA5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		BCDBF2982E33E66F00CCDAA0 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +153,7 @@
 		BCDBF2A02E33F35200CCDAA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BC4888052E12D59E0076F21F /* ProductListController.swift */,
+				BC4888052E12D59E0076F21F /* ProductItemsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -352,6 +363,7 @@
 				BCDBF2B02E33FD3C00CCDAA0 /* ResourceFile.swift in Sources */,
 				BCDBF2BF2E36546500CCDAA0 /* FetchProductsUseCase.swift in Sources */,
 				BCDBF2B42E34F09800CCDAA0 /* ExchangeRate.swift in Sources */,
+				BCAD8ECF2E37EA5E00C9CCA5 /* ProductItemsVM.swift in Sources */,
 				BCDBF2BC2E35010300CCDAA0 /* Transaction.swift in Sources */,
 				BCDBF2B82E34FF5000CCDAA0 /* TransactionsRepository.swift in Sources */,
 				BCDBF2C42E365CFB00CCDAA0 /* TransactionItem.swift in Sources */,
@@ -362,7 +374,7 @@
 				BC4887FE2E12D42D0076F21F /* AppDelegate.swift in Sources */,
 				BC4887FF2E12D42D0076F21F /* SceneDelegate.swift in Sources */,
 				BCDBF2C22E365CEA00CCDAA0 /* ProductItem.swift in Sources */,
-				BC4888062E12D59E0076F21F /* ProductListController.swift in Sources */,
+				BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */,
 				BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */,
 				BCDBF2A32E33F3B300CCDAA0 /* RatesRepository.swift in Sources */,
 			);
