@@ -11,6 +11,7 @@ protocol ProductsFetchingUseCase: Sendable {
     func fetchProducts() async throws -> [ProductItem]
 }
 
+@MainActor
 final class FetchProductsUseCase: ProductsFetchingUseCase {
     
     private let productsRepository: ProductsRepositoryProtocol
@@ -34,29 +35,53 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
             await converter.setExchangeRates(rates)
         }
    
-        let result = products.map({
-            
-            let transactions = getTransactionItems($0.transactions)
-            return ProductItem(sku: $0.sku,
-                               transactions: transactions)
-        })
+        let items = await makeProductItems(from: products)
         
-        return result
+        return items
     }
     
-    private func getTransactionItems(
-        _ transactions: [Transaction]
-    ) -> [TransactionItem] {
-        
-        return transactions.compactMap({
-            if let amountGBP = await converter.convert(from: $0, to: "GBP") {
+    private func makeProductItems(
+        from products: [Product]
+    ) async -> [ProductItem] {
+        return await Task.detached(priority: .utility) {
+            var items = [ProductItem]()
+            
+            for product in products {
                 
-               return TransactionItem(initialCurrency: $0.currency,
-                                      initialAmount: String($0.amount),
-                                      amountGBP: String(amountGBP))
-            } else {
-                return nil
+                let transactions = await self.makeTransactionItems(from: product.transactions)
+                let item = ProductItem(sku: product.sku,
+                                       transactions: transactions)
+                items.append(item)
             }
-        })
+            
+            return items
+        }.value
+    }
+    
+    private func makeTransactionItems(
+        from transactions: [Transaction]
+    ) async -> [TransactionItem] {
+        
+        return await Task.detached(priority: .utility) {
+            
+            var items = [TransactionItem]()
+            
+            for transaction in transactions {
+                
+                let amount = transaction.amount
+                let currency = transaction.currency
+                
+                if let amountGBP = await self.converter.convert(
+                    from: transaction, to: "GBP") {
+                    
+                    let item = TransactionItem(initialCurrency: currency,
+                                               initialAmount: String(amount),
+                                               amountGBP: String(amountGBP))
+                    items.append(item)
+                }
+            }
+            
+            return items
+        }.value
     }
 }

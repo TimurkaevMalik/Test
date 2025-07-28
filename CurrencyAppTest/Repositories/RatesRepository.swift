@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RatesRepositoryProtocol {
+protocol RatesRepositoryProtocol: Sendable {
     func fetchRates() async throws -> [ExchangeRate]
 }
 

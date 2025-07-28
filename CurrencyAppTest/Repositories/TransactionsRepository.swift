@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ProductsRepositoryProtocol {
+protocol ProductsRepositoryProtocol: Sendable {
     func fetchProducts() async throws -> [Product]
 }
 

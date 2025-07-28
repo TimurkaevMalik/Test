@@ -1,5 +1,5 @@
 //
-//  CurrencyConvertible.swift
+//  CurrencyConverter.swift
 //  CurrencyApp
 //
 //  Created by Malik Timurkaev on 27.07.2025.
@@ -23,7 +23,7 @@ final actor CurrencyConverter: CurrencyConvertible {
     private typealias Rate = Float
     
     private var exchangeRates: [From: [To: Rate]] = [:]
-        
+    
     func setExchangeRates(_ rates: [ExchangeRate]) async {
         exchangeRates = rates.reduce(into: [:], { result, rate in
             result[rate.from, default: [:]][rate.to] = rate.rate

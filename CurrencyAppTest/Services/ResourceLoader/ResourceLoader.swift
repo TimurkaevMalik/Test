@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ResourceLoader {
+protocol ResourceLoader: Sendable {
     func load<T: Decodable>(from resource: ResourceFile) async throws -> T
 }

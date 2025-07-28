@@ -31,7 +31,7 @@
 		BCDBF2C62E365EA100CCDAA0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2C52E365EA100CCDAA0 /* Product.swift */; };
 		BCDBF2D82E367A6100CCDAA0 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2D72E367A4F00CCDAA0 /* CurrencyConverterTests.swift */; };
 		BCDBF2DA2E367C2000CCDAA0 /* ExchangeRatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2D92E367C2000CCDAA0 /* ExchangeRatesHolder.swift */; };
-		BCDBF2DD2E368D7E00CCDAA0 /* CurrencyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConvertible.swift */; };
+		BCDBF2DD2E368D7E00CCDAA0 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,7 @@
 		BCDBF2CB2E36780B00CCDAA0 /* CurrencyApps.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyApps.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDBF2D72E367A4F00CCDAA0 /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		BCDBF2D92E367C2000CCDAA0 /* ExchangeRatesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesHolder.swift; sourceTree = "<group>"; };
-		BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertible.swift; sourceTree = "<group>"; };
+		BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +234,7 @@
 		BCDBF2DB2E368D7200CCDAA0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConvertible.swift */,
+				BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -348,7 +348,7 @@
 			files = (
 				BCDBF29A2E33E68C00CCDAA0 /* AppCoordinator.swift in Sources */,
 				BCDBF2AE2E33F5E300CCDAA0 /* ResourceLoader.swift in Sources */,
-				BCDBF2DD2E368D7E00CCDAA0 /* CurrencyConvertible.swift in Sources */,
+				BCDBF2DD2E368D7E00CCDAA0 /* CurrencyConverter.swift in Sources */,
 				BCDBF2B02E33FD3C00CCDAA0 /* ResourceFile.swift in Sources */,
 				BCDBF2BF2E36546500CCDAA0 /* FetchProductsUseCase.swift in Sources */,
 				BCDBF2B42E34F09800CCDAA0 /* ExchangeRate.swift in Sources */,
