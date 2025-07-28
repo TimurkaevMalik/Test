@@ -9,31 +9,28 @@ import Foundation
 
 ///Допустим ли такой нейминг протокола в этом конктесте?
 ///
-protocol CurrencyConvertible: Sendable {
-    mutating func setExchangeRates(_ rates: [ExchangeRate])
-    func hasRates() -> Bool
+protocol CurrencyConvertible: AnyObject, Sendable {
+    func setExchangeRates(_ rates: [ExchangeRate]) async
+    func hasRates() async -> Bool
     func convert(from transaction: Transaction,
-                 to targetCurrency: String) -> Double?
+                 to targetCurrency: String) async -> Double?
 }
 
-struct CurrencyConverter: CurrencyConvertible {
+
+final actor CurrencyConverter: CurrencyConvertible {
     private typealias From = String
     private typealias To = String
     private typealias Rate = Float
     
     private var exchangeRates: [From: [To: Rate]] = [:]
-    
-    init(exchangeRates: [ExchangeRate]) {
-        setExchangeRates(exchangeRates)
-    }
-    
-        mutating func setExchangeRates(_ rates: [ExchangeRate]) {
+        
+    func setExchangeRates(_ rates: [ExchangeRate]) async {
         exchangeRates = rates.reduce(into: [:], { result, rate in
             result[rate.from, default: [:]][rate.to] = rate.rate
         })
     }
     
-    func hasRates() -> Bool {
+    func hasRates() async -> Bool {
         !exchangeRates.isEmpty
     }
     
@@ -52,7 +49,7 @@ struct CurrencyConverter: CurrencyConvertible {
     ///   Все операции внутри цикла (сравнение ключа, lookup вложенного словаря) выполняются за O(1).
     ///
     func convert(from transaction: Transaction,
-                 to targetCurrency: String) -> Double? {
+                 to targetCurrency: String) async -> Double? {
         
         guard transaction.currency != targetCurrency else {
             return transaction.amount
@@ -68,7 +65,7 @@ struct CurrencyConverter: CurrencyConvertible {
             }
             
             if let finalRate = rate(from: intermediateCurrency,
-                                      to: targetCurrency) {
+                                    to: targetCurrency) {
                 
                 let crossRate = directRate * finalRate
                 return transaction.amount * Double(crossRate)

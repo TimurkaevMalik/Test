@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ProductsFetchingUseCase {
+protocol ProductsFetchingUseCase: Sendable {
     func fetchProducts() async throws -> [ProductItem]
 }
 
@@ -15,7 +15,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     
     private let productsRepository: ProductsRepositoryProtocol
     private let ratesRepository: RatesRepositoryProtocol
-    private var converter: CurrencyConvertible
+    private let converter: CurrencyConvertible
     
     init(productsRepository: ProductsRepositoryProtocol,
          ratesRepository: RatesRepositoryProtocol,
@@ -29,9 +29,9 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     func fetchProducts() async throws -> [ProductItem] {
         let products: [Product] = try await productsRepository.fetchProducts()
         
-        if converter.hasRates() {
+        if await converter.hasRates() {
             let rates = try await ratesRepository.fetchRates()
-            converter.setExchangeRates(rates)
+            await converter.setExchangeRates(rates)
         }
    
         let result = products.map({
@@ -41,7 +41,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
                                transactions: transactions)
         })
         
-        return []
+        return result
     }
     
     private func getTransactionItems(
@@ -49,7 +49,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     ) -> [TransactionItem] {
         
         return transactions.compactMap({
-            if let amountGBP = converter.convert(from: $0, to: "GBP") {
+            if let amountGBP = await converter.convert(from: $0, to: "GBP") {
                 
                return TransactionItem(initialCurrency: $0.currency,
                                       initialAmount: String($0.amount),
