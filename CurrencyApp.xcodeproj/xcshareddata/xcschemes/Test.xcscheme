@@ -36,8 +36,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BCDBF2CA2E36780B00CCDAA0"
-               BuildableName = "CurrencyApps.xctest"
-               BlueprintName = "CurrencyApps"
+               BuildableName = "CurrencyAppTests.xctest"
+               BlueprintName = "CurrencyAppTests"
                ReferencedContainer = "container:CurrencyApp.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,0 +1,138 @@
+//
+//  ProductItemsController.swift
+//  Test
+//
+//  Created by Malik Timurkaev on 30.06.2025.
+//
+
+
+import UIKit
+import Combine
+
+final class ProductItemsController: UIViewController {
+    
+    private lazy var productsTableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(ProductCell.self,
+                           forCellReuseIdentifier: ProductCell.identifier)
+        return tableView
+    }()
+    
+    private let vm: ProductItemsVMProtocol
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(productItemsVM: ProductItemsVMProtocol) {
+        vm = productItemsVM
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    ///Это нормально пробрасывать fatalError в таком случае?
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupUI()
+        bindViewModel()
+        vm.fetchProductItems()
+    }
+    
+    private func bindViewModel() {
+        vm.statePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                
+                guard let self else { return }
+                ///Should stop loaderView
+                switch state {
+                    
+                case .loading:
+                    ///Should call loaderView
+                    break
+                case .loaded:
+                    productsTableView.reloadData()
+                case .error(let error):
+                    showAlert(with: error)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func showAlert(with error: Error) {
+        let title = "Something went wrong"
+        let alert = UIAlertController(
+            title: title,
+            message: error.localizedDescription,
+            preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel)
+        
+        let repeatAction = UIAlertAction(title: "Repeat",
+                                         style: .default) { [weak self] _ in
+            self?.vm.fetchProductItems()
+        }
+        
+        alert.addActions([cancelAction, repeatAction])
+        present(alert, animated: true)
+    }
+    
+    private func setupUI() {
+        view.addSubview(productsTableView)
+        
+        productsTableView.separatorInset = UIEdgeInsets(top: 0,
+                                                        left: 0,
+                                                        bottom: 0,
+                                                        right: 0)
+        
+        NSLayoutConstraint.activate([
+            productsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            productsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            productsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            productsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+}
+
+extension ProductItemsController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        
+        return vm.productItems.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        ///Можно ли писать с такими пробелами у guard и else?
+        ///Не является ли признаком плохого опыта?
+        guard
+            let cell = tableView.dequeueReusableCell(
+            withIdentifier: ProductCell.identifier,
+            for: indexPath) as? ProductCell
+        else {
+            return UITableViewCell()
+        }
+        
+        cell.accessoryType = .disclosureIndicator
+        
+        if let item = vm.productItems[safe: indexPath.row] {
+            cell.configure(sku: item.sku,
+                           transactionsCount: item.transactions.count)
+        }
+        
+        return cell
+    }
+}
+
+extension ProductItemsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

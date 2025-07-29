@@ -9,24 +9,29 @@ import UIKit
 
 @MainActor
 protocol Coordinator {
-    var navigationController: UINavigationController { get }
     func start()
 }
 
-@MainActor
 final class AppCoordinator: Coordinator {
-    let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    private let navigationController: UINavigationController
+    private let productItemsControllerFactory: ProductItemsControllerFactoryProtocol
+    
+    init(navigationController: UINavigationController,
+         factory: ProductItemsControllerFactoryProtocol) {
         self.navigationController = navigationController
+        productItemsControllerFactory = factory
     }
     
     func start() {
-        showProductListController()
+        Task {
+            await showProductListController()
+        }
     }
     
-    private func showProductListController() {
-        let controller = ProductItemsController()
-        navigationController.pushViewController(controller, animated: true)
+    private func showProductListController() async {
+        let controller = await productItemsControllerFactory.make()
+        navigationController.pushViewController(controller,
+                                                animated: true)
     }
 }

@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC4019652E38B28E0011F29D /* ProductItemsControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4019642E38B28E0011F29D /* ProductItemsControllerFactory.swift */; };
+		BC4019672E38C3250011F29D /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */; };
+		BC40196A2E38CCAE0011F29D /* ProductItemsVMState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4019692E38CCAE0011F29D /* ProductItemsVMState.swift */; };
 		BC4887FE2E12D42D0076F21F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4887F42E12D42D0076F21F /* AppDelegate.swift */; };
 		BC4887FF2E12D42D0076F21F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */; };
 		BC4888012E12D42D0076F21F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4887F52E12D42D0076F21F /* Assets.xcassets */; };
 		BC4888032E12D42D0076F21F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4887F82E12D42D0076F21F /* LaunchScreen.storyboard */; };
 		BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4888052E12D59E0076F21F /* ProductItemsController.swift */; };
 		BCAD8ECF2E37EA5E00C9CCA5 /* ProductItemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */; };
+		BCAD8ED22E37F9B200C9CCA5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ED12E37F9A700C9CCA5 /* ProductCell.swift */; };
+		BCAD8ED62E38033500C9CCA5 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ED52E38032700C9CCA5 /* Array+Ext.swift */; };
 		BCDBF29A2E33E68C00CCDAA0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */; };
 		BCDBF29E2E33F04800CCDAA0 /* transactions.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29D2E33F04800CCDAA0 /* transactions.plist */; };
 		BCDBF29F2E33F04800CCDAA0 /* rates.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29C2E33F04800CCDAA0 /* rates.plist */; };
@@ -46,7 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC4887DC2E12D4240076F21F /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4019622E38A8550011F29D /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = CurrencyApp.app; path = "/Users/malik_timurkaev/Documents/App.Folder/Test/build/Debug-iphoneos/CurrencyApp.app"; sourceTree = "<absolute>"; };
+		BC4019632E38A8550011F29D /* CurrencyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyAppTests.xctest; path = "/Users/malik_timurkaev/Documents/App.Folder/Test/build/Debug-iphoneos/CurrencyApp.app/PlugIns/CurrencyAppTests.xctest"; sourceTree = "<absolute>"; };
+		BC4019642E38B28E0011F29D /* ProductItemsControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsControllerFactory.swift; sourceTree = "<group>"; };
+		BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
+		BC4019692E38CCAE0011F29D /* ProductItemsVMState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsVMState.swift; sourceTree = "<group>"; };
 		BC4887F42E12D42D0076F21F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4887F52E12D42D0076F21F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4887F62E12D42D0076F21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +63,8 @@
 		BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BC4888052E12D59E0076F21F /* ProductItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsController.swift; sourceTree = "<group>"; };
 		BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsVM.swift; sourceTree = "<group>"; };
+		BCAD8ED12E37F9A700C9CCA5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		BCAD8ED52E38032700C9CCA5 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BCDBF29C2E33F04800CCDAA0 /* rates.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rates.plist; sourceTree = "<group>"; };
 		BCDBF29D2E33F04800CCDAA0 /* transactions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = transactions.plist; sourceTree = "<group>"; };
@@ -71,7 +82,6 @@
 		BCDBF2C12E365CEA00CCDAA0 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		BCDBF2C32E365CFB00CCDAA0 /* TransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
 		BCDBF2C52E365EA100CCDAA0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		BCDBF2CB2E36780B00CCDAA0 /* CurrencyApps.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyApps.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDBF2D72E367A4F00CCDAA0 /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		BCDBF2D92E367C2000CCDAA0 /* ExchangeRatesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesHolder.swift; sourceTree = "<group>"; };
 		BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
@@ -95,27 +105,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC4019682E38CCA40011F29D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				BC4019692E38CCAE0011F29D /* ProductItemsVMState.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		BC4887D32E12D4240076F21F = {
 			isa = PBXGroup;
 			children = (
 				BC4887FD2E12D42D0076F21F /* CurrencyAppTest */,
 				BCDBF2D52E36781E00CCDAA0 /* CurrencyAppTests */,
-				BC4887DD2E12D4240076F21F /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		BC4887DD2E12D4240076F21F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BC4887DC2E12D4240076F21F /* CurrencyApp.app */,
-				BCDBF2CB2E36780B00CCDAA0 /* CurrencyApps.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BC4887FD2E12D42D0076F21F /* CurrencyAppTest */ = {
 			isa = PBXGroup;
 			children = (
+				BCAD8ED32E38030F00C9CCA5 /* Helpers */,
 				BCDBF2A82E33F4E600CCDAA0 /* Services */,
 				BCDBF2A42E33F41400CCDAA0 /* Models */,
 				BCDBF2A12E33F37C00CCDAA0 /* Repositories */,
@@ -125,10 +134,10 @@
 				BCDBF2A02E33F35200CCDAA0 /* Controllers */,
 				BC4887F42E12D42D0076F21F /* AppDelegate.swift */,
 				BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */,
-				BC4887F52E12D42D0076F21F /* Assets.xcassets */,
 				BC4887F62E12D42D0076F21F /* Info.plist */,
 				BCDBF29C2E33F04800CCDAA0 /* rates.plist */,
 				BCDBF29D2E33F04800CCDAA0 /* transactions.plist */,
+				BC4887F52E12D42D0076F21F /* Assets.xcassets */,
 				BC4887F82E12D42D0076F21F /* LaunchScreen.storyboard */,
 			);
 			path = CurrencyAppTest;
@@ -138,13 +147,41 @@
 			isa = PBXGroup;
 			children = (
 				BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */,
+				BC4019682E38CCA40011F29D /* Enums */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BCAD8ED02E37F5B200C9CCA5 /* ProductItemsController */ = {
+			isa = PBXGroup;
+			children = (
+				BCAD8ED12E37F9A700C9CCA5 /* ProductCell.swift */,
+				BC4888052E12D59E0076F21F /* ProductItemsController.swift */,
+			);
+			path = ProductItemsController;
+			sourceTree = "<group>";
+		};
+		BCAD8ED32E38030F00C9CCA5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BCAD8ED42E38031700C9CCA5 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BCAD8ED42E38031700C9CCA5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */,
+				BCAD8ED52E38032700C9CCA5 /* Array+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BCDBF2982E33E66F00CCDAA0 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				BC4019642E38B28E0011F29D /* ProductItemsControllerFactory.swift */,
 				BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -153,7 +190,7 @@
 		BCDBF2A02E33F35200CCDAA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BC4888052E12D59E0076F21F /* ProductItemsController.swift */,
+				BCAD8ED02E37F5B200C9CCA5 /* ProductItemsController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,12 +306,12 @@
 			packageProductDependencies = (
 			);
 			productName = Test;
-			productReference = BC4887DC2E12D4240076F21F /* CurrencyApp.app */;
+			productReference = BC4019622E38A8550011F29D /* CurrencyApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BCDBF2CA2E36780B00CCDAA0 /* CurrencyApps */ = {
+		BCDBF2CA2E36780B00CCDAA0 /* CurrencyAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCDBF2D12E36780B00CCDAA0 /* Build configuration list for PBXNativeTarget "CurrencyApps" */;
+			buildConfigurationList = BCDBF2D12E36780B00CCDAA0 /* Build configuration list for PBXNativeTarget "CurrencyAppTests" */;
 			buildPhases = (
 				BCDBF2C72E36780B00CCDAA0 /* Sources */,
 				BCDBF2C82E36780B00CCDAA0 /* Frameworks */,
@@ -285,11 +322,11 @@
 			dependencies = (
 				BCDBF2D02E36780B00CCDAA0 /* PBXTargetDependency */,
 			);
-			name = CurrencyApps;
+			name = CurrencyAppTests;
 			packageProductDependencies = (
 			);
 			productName = AppTests;
-			productReference = BCDBF2CB2E36780B00CCDAA0 /* CurrencyApps.xctest */;
+			productReference = BC4019632E38A8550011F29D /* CurrencyAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -321,12 +358,12 @@
 			mainGroup = BC4887D32E12D4240076F21F;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = BC4887DD2E12D4240076F21F /* Products */;
+			productRefGroup = BC4887D32E12D4240076F21F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				BC4887DB2E12D4240076F21F /* CurrencyApp */,
-				BCDBF2CA2E36780B00CCDAA0 /* CurrencyApps */,
+				BCDBF2CA2E36780B00CCDAA0 /* CurrencyAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -364,15 +401,20 @@
 				BCDBF2BF2E36546500CCDAA0 /* FetchProductsUseCase.swift in Sources */,
 				BCDBF2B42E34F09800CCDAA0 /* ExchangeRate.swift in Sources */,
 				BCAD8ECF2E37EA5E00C9CCA5 /* ProductItemsVM.swift in Sources */,
+				BC40196A2E38CCAE0011F29D /* ProductItemsVMState.swift in Sources */,
 				BCDBF2BC2E35010300CCDAA0 /* Transaction.swift in Sources */,
 				BCDBF2B82E34FF5000CCDAA0 /* TransactionsRepository.swift in Sources */,
 				BCDBF2C42E365CFB00CCDAA0 /* TransactionItem.swift in Sources */,
+				BC4019652E38B28E0011F29D /* ProductItemsControllerFactory.swift in Sources */,
 				BCDBF2BA2E34FFDB00CCDAA0 /* TransactionDTO.swift in Sources */,
 				BCDBF2A72E33F43400CCDAA0 /* ExchangeRateDTO.swift in Sources */,
+				BCAD8ED22E37F9B200C9CCA5 /* ProductCell.swift in Sources */,
 				BCDBF2AA2E33F50600CCDAA0 /* DataPlistService.swift in Sources */,
 				BCDBF2C62E365EA100CCDAA0 /* Product.swift in Sources */,
 				BC4887FE2E12D42D0076F21F /* AppDelegate.swift in Sources */,
 				BC4887FF2E12D42D0076F21F /* SceneDelegate.swift in Sources */,
+				BC4019672E38C3250011F29D /* UIAlertController+Ext.swift in Sources */,
+				BCAD8ED62E38033500C9CCA5 /* Array+Ext.swift in Sources */,
 				BCDBF2C22E365CEA00CCDAA0 /* ProductItem.swift in Sources */,
 				BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */,
 				BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */,
@@ -643,7 +685,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BCDBF2D12E36780B00CCDAA0 /* Build configuration list for PBXNativeTarget "CurrencyApps" */ = {
+		BCDBF2D12E36780B00CCDAA0 /* Build configuration list for PBXNativeTarget "CurrencyAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCDBF2D22E36780B00CCDAA0 /* Debug */,

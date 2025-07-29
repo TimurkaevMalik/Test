@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProductsFetchingUseCase: Sendable {
-    func fetchProductItems() async throws -> [ProductItem]
+    func fetch() async throws -> [ProductItem]
 }
 
 @MainActor
@@ -27,10 +27,10 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
         self.converter = converter
     }
     
-    func fetchProductItems() async throws -> [ProductItem] {
+    func fetch() async throws -> [ProductItem] {
         let products: [Product] = try await productsRepository.fetchProducts()
         
-        if await converter.hasRates() {
+        if await !converter.hasRates() {
             let rates = try await ratesRepository.fetchRates()
             await converter.setExchangeRates(rates)
         }

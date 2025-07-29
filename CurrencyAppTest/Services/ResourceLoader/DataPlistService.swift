@@ -15,7 +15,7 @@ final class DataPlistService: ResourceLoader {
     func load<T>(from resource: ResourceFile) async throws -> T
     where T: Decodable & Sendable {
         
-        try await Task.detached(priority: .utility) {
+        return try await Task.detached(priority: .utility) {
             
             guard let url = self.resolveURL(for: resource) else {
                 throw ErrorPlistService.fileNotFound
