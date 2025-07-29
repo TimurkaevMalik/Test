@@ -11,6 +11,8 @@
 		BC4019672E38C3250011F29D /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */; };
 		BC40196A2E38CCAE0011F29D /* ProductItemsVMState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4019692E38CCAE0011F29D /* ProductItemsVMState.swift */; };
 		BC40196D2E38CD130011F29D /* BlurLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC40196C2E38CD070011F29D /* BlurLoaderView.swift */; };
+		BC40196F2E3900780011F29D /* TransactionItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC40196E2E38FE040011F29D /* TransactionItemsController.swift */; };
+		BC4019712E39036D0011F29D /* TransactionItemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4019702E39036D0011F29D /* TransactionItemsVM.swift */; };
 		BC4887FE2E12D42D0076F21F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4887F42E12D42D0076F21F /* AppDelegate.swift */; };
 		BC4887FF2E12D42D0076F21F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4887FB2E12D42D0076F21F /* SceneDelegate.swift */; };
 		BC4888012E12D42D0076F21F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4887F52E12D42D0076F21F /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
 		BC4019692E38CCAE0011F29D /* ProductItemsVMState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsVMState.swift; sourceTree = "<group>"; };
 		BC40196C2E38CD070011F29D /* BlurLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLoaderView.swift; sourceTree = "<group>"; };
+		BC40196E2E38FE040011F29D /* TransactionItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItemsController.swift; sourceTree = "<group>"; };
+		BC4019702E39036D0011F29D /* TransactionItemsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItemsVM.swift; sourceTree = "<group>"; };
 		BC4887F42E12D42D0076F21F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4887F52E12D42D0076F21F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4887F62E12D42D0076F21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,18 +162,11 @@
 		BCAD8ECD2E37EA4E00C9CCA5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BC4019702E39036D0011F29D /* TransactionItemsVM.swift */,
 				BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */,
 				BC4019682E38CCA40011F29D /* Enums */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		BCAD8ED02E37F5B200C9CCA5 /* ProductItemsController */ = {
-			isa = PBXGroup;
-			children = (
-				BC4888052E12D59E0076F21F /* ProductItemsController.swift */,
-			);
-			path = ProductItemsController;
 			sourceTree = "<group>";
 		};
 		BCAD8ED32E38030F00C9CCA5 /* Helpers */ = {
@@ -201,7 +198,8 @@
 		BCDBF2A02E33F35200CCDAA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BCAD8ED02E37F5B200C9CCA5 /* ProductItemsController */,
+				BC40196E2E38FE040011F29D /* TransactionItemsController.swift */,
+				BC4888052E12D59E0076F21F /* ProductItemsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -430,6 +428,8 @@
 				BCDBF2C22E365CEA00CCDAA0 /* ProductItem.swift in Sources */,
 				BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */,
 				BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */,
+				BC4019712E39036D0011F29D /* TransactionItemsVM.swift in Sources */,
+				BC40196F2E3900780011F29D /* TransactionItemsController.swift in Sources */,
 				BCDBF2A32E33F3B300CCDAA0 /* RatesRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

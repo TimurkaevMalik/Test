@@ -11,6 +11,8 @@ import Combine
 
 final class ProductItemsController: UIViewController {
     
+    var onProductSelected: ((ProductItem) -> Void) = {_ in }
+    
     private lazy var productsTableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -139,11 +141,10 @@ extension ProductItemsController: UITableViewDataSource {
         
         cell.accessoryType = .disclosureIndicator
         
-        if let item = vm.productItems[safe: indexPath.row] {
-            let count = "\(item.transactions.count) transactions"
-            cell.configure(leftText: item.sku,
-                           rightText: count)
-        }
+        let item = vm.productItems[indexPath.row]
+        let count = "\(item.transactions.count) transactions"
+        cell.configure(leftText: item.sku,
+                       rightText: count)
         
         return cell
     }
@@ -152,6 +153,10 @@ extension ProductItemsController: UITableViewDataSource {
 extension ProductItemsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
+        
+        if let product = vm.productItems[safe: indexPath.row] {
+            onProductSelected(product)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
