@@ -100,6 +100,7 @@ final class ProductItemsController: UIViewController {
         view.addSubview(productsTableView)
         view.addSubview(blurLoaderView)
         
+        productsTableView.tableHeaderView = UIView(frame: .zero)
         productsTableView.separatorInset = UIEdgeInsets(top: 0,
                                                         left: 0,
                                                         bottom: 0,
@@ -108,7 +109,7 @@ final class ProductItemsController: UIViewController {
         NSLayoutConstraint.activate([
             productsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             productsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            productsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            productsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .leftMargin),
             productsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             blurLoaderView.topAnchor.constraint(equalTo: view.topAnchor),

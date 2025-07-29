@@ -17,12 +17,22 @@ final class TransactionItemsController: UIViewController {
                            forCellReuseIdentifier: TwoLabelCell.identifier)
         return tableView
     }()
-    
-    private lazy var blurLoaderView = {
-        let loader = BlurLoaderView(with: .dark)
-        loader.translatesAutoresizingMaskIntoConstraints = false
-        loader.isHidden = true
-        return loader
+        
+    private lazy var totalCountLabel = {
+        let label = UILabel()
+        
+        ///Так можно писать color?
+        label.backgroundColor =
+        navigationController?
+            .navigationBar
+            .standardAppearance
+            .backgroundColor
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        
+        label.text = "Total: "
+        return label
     }()
     
     private let vm: TransactionItemsVMProtocol
@@ -45,8 +55,9 @@ final class TransactionItemsController: UIViewController {
     
     private func setupUI() {
         view.addSubview(transactionsTableView)
-        view.addSubview(blurLoaderView)
-        
+        view.addSubview(totalCountLabel)
+
+        transactionsTableView.tableHeaderView = UIView(frame: .zero)
         transactionsTableView.allowsSelection = false
         transactionsTableView.separatorInset = UIEdgeInsets(top: 0,
                                                         left: 0,
@@ -54,15 +65,15 @@ final class TransactionItemsController: UIViewController {
                                                         right: 0)
         
         NSLayoutConstraint.activate([
-            transactionsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            transactionsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            transactionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            transactionsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            totalCountLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            totalCountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            totalCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            totalCountLabel.heightAnchor.constraint(equalToConstant: 24),
             
-            blurLoaderView.topAnchor.constraint(equalTo: view.topAnchor),
-            blurLoaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            blurLoaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            blurLoaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            transactionsTableView.topAnchor.constraint(equalTo: totalCountLabel.bottomAnchor),
+            transactionsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            transactionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .leftMargin),
+            transactionsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }
