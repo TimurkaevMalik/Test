@@ -16,9 +16,16 @@ final class ProductItemsController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ProductCell.self,
-                           forCellReuseIdentifier: ProductCell.identifier)
+        tableView.register(TwoLabelCell.self,
+                           forCellReuseIdentifier: TwoLabelCell.identifier)
         return tableView
+    }()
+    
+    private lazy var blurLoaderView = {
+        let loader = BlurLoaderView(with: .dark)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        loader.isHidden = true
+        return loader
     }()
     
     private let vm: ProductItemsVMProtocol
@@ -37,6 +44,7 @@ final class ProductItemsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        title = "Products"
         setupUI()
         bindViewModel()
         vm.fetchProductItems()
@@ -48,16 +56,17 @@ final class ProductItemsController: UIViewController {
             .sink { [weak self] state in
                 
                 guard let self else { return }
-                ///Should stop loaderView
+                
                 switch state {
                     
                 case .loading:
-                    ///Should call loaderView
-                    break
+                    blurLoaderView.showLoader()
                 case .loaded:
                     productsTableView.reloadData()
+                    blurLoaderView.hideLoader()
                 case .error(let error):
                     showAlert(with: error)
+                    blurLoaderView.hideLoader()
                 }
             }
             .store(in: &cancellables)
@@ -70,13 +79,16 @@ final class ProductItemsController: UIViewController {
             message: error.localizedDescription,
             preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .cancel)
+        let cancelAction = UIAlertAction(
+            title: "Cancel",
+            style: .cancel)
         
-        let repeatAction = UIAlertAction(title: "Repeat",
-                                         style: .default) { [weak self] _ in
-            self?.vm.fetchProductItems()
-        }
+        let repeatAction = UIAlertAction(
+            title: "Repeat",
+            style: .default) { [weak self] _ in
+                
+                self?.vm.fetchProductItems()
+            }
         
         alert.addActions([cancelAction, repeatAction])
         present(alert, animated: true)
@@ -84,6 +96,7 @@ final class ProductItemsController: UIViewController {
     
     private func setupUI() {
         view.addSubview(productsTableView)
+        view.addSubview(blurLoaderView)
         
         productsTableView.separatorInset = UIEdgeInsets(top: 0,
                                                         left: 0,
@@ -93,8 +106,13 @@ final class ProductItemsController: UIViewController {
         NSLayoutConstraint.activate([
             productsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             productsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            productsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            productsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            productsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            productsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            blurLoaderView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurLoaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            blurLoaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurLoaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }
@@ -113,8 +131,8 @@ extension ProductItemsController: UITableViewDataSource {
         ///Не является ли признаком плохого опыта?
         guard
             let cell = tableView.dequeueReusableCell(
-            withIdentifier: ProductCell.identifier,
-            for: indexPath) as? ProductCell
+                withIdentifier: TwoLabelCell.identifier,
+                for: indexPath) as? TwoLabelCell
         else {
             return UITableViewCell()
         }
@@ -122,8 +140,9 @@ extension ProductItemsController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         
         if let item = vm.productItems[safe: indexPath.row] {
-            cell.configure(sku: item.sku,
-                           transactionsCount: item.transactions.count)
+            let count = "\(item.transactions.count) transactions"
+            cell.configure(leftText: item.sku,
+                           rightText: count)
         }
         
         return cell

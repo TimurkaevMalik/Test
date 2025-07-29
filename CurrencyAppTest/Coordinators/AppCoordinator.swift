@@ -21,6 +21,7 @@ final class AppCoordinator: Coordinator {
          factory: ProductItemsControllerFactoryProtocol) {
         self.navigationController = navigationController
         productItemsControllerFactory = factory
+        configureNavigationBar()
     }
     
     func start() {
@@ -33,5 +34,15 @@ final class AppCoordinator: Coordinator {
         let controller = await productItemsControllerFactory.make()
         navigationController.pushViewController(controller,
                                                 animated: true)
+    }
+    
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .secondarySystemBackground
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
     }
 }
