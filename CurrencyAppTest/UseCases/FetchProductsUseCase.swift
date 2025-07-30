@@ -17,14 +17,17 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
     private let productsRepository: ProductsRepositoryProtocol
     private let ratesRepository: RatesRepositoryProtocol
     private let converter: CurrencyConvertible
+    private let productItemsFactory: ProductItemsFactoryProtocol
     
     init(productsRepository: ProductsRepositoryProtocol,
          ratesRepository: RatesRepositoryProtocol,
-         converter: CurrencyConverter) {
+         converter: CurrencyConverter,
+         factory: ProductItemsFactoryProtocol) {
         
         self.productsRepository = productsRepository
         self.ratesRepository = ratesRepository
         self.converter = converter
+        productItemsFactory = factory
     }
     
     func fetch() async throws -> [ProductItem] {
@@ -34,54 +37,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
             let rates = try await ratesRepository.fetchRates()
             await converter.setExchangeRates(rates)
         }
-
-        return await makeProductItems(from: products)
-    }
-    
-    private func makeProductItems(
-        from products: [Product]
-    ) async -> [ProductItem] {
         
-        return await Task.detached(priority: .utility) {
-            var items = [ProductItem]()
-            
-            for product in products {
-                
-                let transactionItems = await self.makeTransactionItems(from: product.transactions)
-                
-                let item = ProductItem(sku: product.sku,
-                                       transactions: transactionItems)
-                items.append(item)
-            }
-            
-            return items
-        }.value
-    }
-    
-    private func makeTransactionItems(
-        from transactions: [Transaction]
-    ) async -> [TransactionItem] {
-        
-        return await Task.detached(priority: .utility) {
-            
-            var items = [TransactionItem]()
-            
-            for transaction in transactions {
-                
-                let amount = transaction.amount
-                let currency = transaction.currency
-                
-                if let amountGBP = await self.converter.convert(
-                    from: transaction, to: "GBP") {
-                    
-                    let item = TransactionItem(initialCurrency: currency,
-                                               initialAmount: String(amount),
-                                               amountGBP: String(amountGBP))
-                    items.append(item)
-                }
-            }
-            
-            return items
-        }.value
+        return await productItemsFactory.make(from: products)
     }
 }

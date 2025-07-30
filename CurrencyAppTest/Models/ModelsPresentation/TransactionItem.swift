@@ -8,7 +8,6 @@
 import Foundation
 
 struct TransactionItem {
-    let initialCurrency: String
-    let initialAmount: String
-    let amountGBP: String
+    let initial: MoneyItem
+    let converted: MoneyItem
 }

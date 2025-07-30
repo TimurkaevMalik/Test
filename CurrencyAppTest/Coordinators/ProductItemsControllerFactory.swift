@@ -32,11 +32,16 @@ final class ProductItemsControllerFactory: ProductItemsControllerFactoryProtocol
             ratesService: plistService,
             resource: ratesResource)
         
+#warning("нету ли нарушения архитектуры? Ведь я передаю converter в factory и usecase. Но модифицирую его содержимое только в usecase, то-есть вызываю его методы: hasRates(), setExchangeRates(). А метод convert() вызываю внутри factory")
+        
         let converter = CurrencyConverter()
+        let factory = ProductItemsFactory(converter: converter)
         let useCase = FetchProductsUseCase(
             productsRepository: productsRepository,
             ratesRepository: ratesRepository,
-            converter: converter)
+            converter: converter,
+            factory: factory
+        )
         
         let vm = ProductItemsVM(fetchProductsUseCase: useCase)
         return ProductItemsController(productItemsVM: vm)

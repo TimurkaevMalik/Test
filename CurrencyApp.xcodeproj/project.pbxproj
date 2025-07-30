@@ -42,6 +42,8 @@
 		BCDBF2D82E367A6100CCDAA0 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2D72E367A4F00CCDAA0 /* CurrencyConverterTests.swift */; };
 		BCDBF2DA2E367C2000CCDAA0 /* ExchangeRatesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2D92E367C2000CCDAA0 /* ExchangeRatesHolder.swift */; };
 		BCDBF2DD2E368D7E00CCDAA0 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */; };
+		BCF30E8F2E3A92DD00F2C9FA /* MoneyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF30E8E2E3A92D700F2C9FA /* MoneyItem.swift */; };
+		BCF30E912E3A9DC300F2C9FA /* ProductItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF30E902E3A9DC300F2C9FA /* ProductItemsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC4019622E38A8550011F29D /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = CurrencyApp.app; path = "/Users/malik_timurkaev/Documents/App.Folder/Test/build/Debug-iphoneos/CurrencyApp.app"; sourceTree = "<absolute>"; };
-		BC4019632E38A8550011F29D /* CurrencyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyAppTests.xctest; path = "/Users/malik_timurkaev/Documents/App.Folder/Test/build/Debug-iphoneos/CurrencyApp.app/PlugIns/CurrencyAppTests.xctest"; sourceTree = "<absolute>"; };
 		BC4019642E38B28E0011F29D /* ProductItemsControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsControllerFactory.swift; sourceTree = "<group>"; };
 		BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
 		BC4019692E38CCAE0011F29D /* ProductItemsVMState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsVMState.swift; sourceTree = "<group>"; };
@@ -93,6 +93,10 @@
 		BCDBF2D72E367A4F00CCDAA0 /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		BCDBF2D92E367C2000CCDAA0 /* ExchangeRatesHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesHolder.swift; sourceTree = "<group>"; };
 		BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		BCF30E8C2E3A570E00F2C9FA /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF30E8D2E3A570E00F2C9FA /* CurrencyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF30E8E2E3A92D700F2C9FA /* MoneyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyItem.swift; sourceTree = "<group>"; };
+		BCF30E902E3A9DC300F2C9FA /* ProductItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 			children = (
 				BC4887FD2E12D42D0076F21F /* CurrencyAppTest */,
 				BCDBF2D52E36781E00CCDAA0 /* CurrencyAppTests */,
+				BCF30E8C2E3A570E00F2C9FA /* CurrencyApp.app */,
+				BCF30E8D2E3A570E00F2C9FA /* CurrencyAppTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,6 +274,7 @@
 		BCDBF2BD2E36543400CCDAA0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				BCF30E902E3A9DC300F2C9FA /* ProductItemsFactory.swift */,
 				BCDBF2BE2E36545600CCDAA0 /* FetchProductsUseCase.swift */,
 			);
 			path = UseCases;
@@ -276,6 +283,7 @@
 		BCDBF2C02E365CD600CCDAA0 /* ModelsPresentation */ = {
 			isa = PBXGroup;
 			children = (
+				BCF30E8E2E3A92D700F2C9FA /* MoneyItem.swift */,
 				BCDBF2C32E365CFB00CCDAA0 /* TransactionItem.swift */,
 				BCDBF2C12E365CEA00CCDAA0 /* ProductItem.swift */,
 			);
@@ -318,7 +326,7 @@
 			packageProductDependencies = (
 			);
 			productName = Test;
-			productReference = BC4019622E38A8550011F29D /* CurrencyApp.app */;
+			productReference = BCF30E8C2E3A570E00F2C9FA /* CurrencyApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BCDBF2CA2E36780B00CCDAA0 /* CurrencyAppTests */ = {
@@ -338,7 +346,7 @@
 			packageProductDependencies = (
 			);
 			productName = AppTests;
-			productReference = BC4019632E38A8550011F29D /* CurrencyAppTests.xctest */;
+			productReference = BCF30E8D2E3A570E00F2C9FA /* CurrencyAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -415,6 +423,7 @@
 				BCAD8ECF2E37EA5E00C9CCA5 /* ProductItemsVM.swift in Sources */,
 				BC40196A2E38CCAE0011F29D /* ProductItemsVMState.swift in Sources */,
 				BCDBF2BC2E35010300CCDAA0 /* Transaction.swift in Sources */,
+				BCF30E8F2E3A92DD00F2C9FA /* MoneyItem.swift in Sources */,
 				BCDBF2B82E34FF5000CCDAA0 /* TransactionsRepository.swift in Sources */,
 				BCDBF2C42E365CFB00CCDAA0 /* TransactionItem.swift in Sources */,
 				BC4019652E38B28E0011F29D /* ProductItemsControllerFactory.swift in Sources */,
@@ -434,6 +443,7 @@
 				BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */,
 				BC4019712E39036D0011F29D /* TransactionItemsVM.swift in Sources */,
 				BC40196F2E3900780011F29D /* TransactionItemsController.swift in Sources */,
+				BCF30E912E3A9DC300F2C9FA /* ProductItemsFactory.swift in Sources */,
 				BCDBF2A32E33F3B300CCDAA0 /* RatesRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

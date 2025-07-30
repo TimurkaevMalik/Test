@@ -97,8 +97,8 @@ extension TransactionItemsController: UITableViewDataSource {
         }
         
         let item = vm.productItem.transactions[indexPath.row]
-        cell.configure(leftText: item.initialAmount,
-                       rightText: item.amountGBP)
+        cell.configure(leftText: item.initial.amount,
+                       rightText: item.converted.amount)
         
         return cell
     }

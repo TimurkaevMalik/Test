@@ -9,5 +9,6 @@ import Foundation
 
 struct ProductItem {
     let sku: String
+    let total: MoneyItem
     let transactions: [TransactionItem]
 }
