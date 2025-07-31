@@ -25,6 +25,6 @@ final class PlistRatesRepository: RatesRepositoryProtocol {
     func fetchRates() async throws -> [ExchangeRate] {
         
         let data: [ExchangeRateDTO] = try await ratesService.load(from: resource)
-        return data.compactMap({ ExchangeRate(from: $0) })
+        return data.compactMap({ ExchangeRate(dto: $0) })
     }
 }

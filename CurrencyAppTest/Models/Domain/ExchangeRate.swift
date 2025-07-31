@@ -14,7 +14,7 @@ struct ExchangeRate {
 }
 
 extension ExchangeRate {
-    init?(from dto: ExchangeRateDTO) {
+    init?(dto: ExchangeRateDTO) {
         if let rateValue = Float(dto.rate) {
             rate = rateValue
             from = dto.from

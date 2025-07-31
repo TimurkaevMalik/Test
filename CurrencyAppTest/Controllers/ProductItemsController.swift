@@ -19,7 +19,8 @@ final class ProductItemsController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TwoLabelCell.self,
-                           forCellReuseIdentifier: TwoLabelCell.identifier)
+                           forCellReuseIdentifier:
+                            TwoLabelCell.identifier)
         return tableView
     }()
     
