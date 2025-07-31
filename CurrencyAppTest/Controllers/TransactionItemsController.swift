@@ -21,7 +21,7 @@ final class TransactionItemsController: UIViewController {
     private lazy var totalCountLabel = {
         let label = UILabel()
         
-        ///Так можно писать color?
+#warning("Так можно писать color? Речь об отступах для читаемости")
         label.backgroundColor =
         navigationController?
             .navigationBar
@@ -31,7 +31,10 @@ final class TransactionItemsController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .medium)
         
-        label.text = "Total: "
+        let symbol = vm.productItem.total.currency
+        let amount = vm.productItem.total.amount
+        
+        label.text = "Total: " + symbol + amount
         return label
     }()
     
@@ -97,8 +100,11 @@ extension TransactionItemsController: UITableViewDataSource {
         }
         
         let item = vm.productItem.transactions[indexPath.row]
-        cell.configure(leftText: item.initial.amount,
-                       rightText: item.converted.amount)
+        
+        let leftText = "\(item.initial.currency)" + "\(item.initial.amount)"
+        let rightText = "\(item.converted.currency)" + "\(item.converted.amount)"
+        
+        cell.configure(leftText: leftText, rightText: rightText)
         
         return cell
     }

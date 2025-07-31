@@ -6,7 +6,7 @@
 //
 
 import Foundation
-/// Не является лишним этот viewModel? может мне стоило добавить массив сразу в контроллер? 
+#warning("Не является лишним этот viewModel? может мне стоило добавить `productItem` сразу в контроллер?")
 @MainActor
 protocol TransactionItemsVMProtocol {
     var productItem: ProductItem { get }

@@ -35,7 +35,10 @@ final class ProductItemsControllerFactory: ProductItemsControllerFactoryProtocol
 #warning("нету ли нарушения архитектуры? Ведь я передаю converter в factory и usecase. Но модифицирую его содержимое только в usecase, то-есть вызываю его методы: hasRates(), setExchangeRates(). А метод convert() вызываю внутри factory")
         
         let converter = CurrencyConverter()
-        let factory = ProductItemsFactory(converter: converter)
+        let formatter = CustomNumberFormatter()
+        let factory = ProductItemsFactory(converter: converter,
+                                          formatter: formatter)
+        
         let useCase = FetchProductsUseCase(
             productsRepository: productsRepository,
             ratesRepository: ratesRepository,

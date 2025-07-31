@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-/// В компаниях дают ли такое сокращенное название (VM)
+#warning("В компаниях дают ли такое сокращенное название (VM)")
 @MainActor
 protocol ProductItemsVMProtocol {
     var productItems: [ProductItem] { get }

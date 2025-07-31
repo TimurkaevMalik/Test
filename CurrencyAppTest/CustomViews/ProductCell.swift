@@ -8,7 +8,8 @@
 import UIKit
 
 final class TwoLabelCell: UITableViewCell {
-    ///Нормально или устанавливать статичный identifier?
+    
+#warning("Нормально или устанавливать статичный identifier?")
     static let identifier = "TwoLabelCell"
     
     private let leftLabel = {

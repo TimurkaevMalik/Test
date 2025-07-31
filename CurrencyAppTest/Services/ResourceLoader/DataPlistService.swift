@@ -7,7 +7,7 @@
 
 import Foundation
 
-///Правильно ли я логирую ошибки? Не слишком много кода?
+#warning("Правильно ли я логирую ошибки? Не слишком много кода для логирования?")
 final class DataPlistService: ResourceLoader {
     
     private let decoder = PropertyListDecoder()

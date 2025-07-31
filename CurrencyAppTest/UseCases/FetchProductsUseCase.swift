@@ -38,6 +38,7 @@ final class FetchProductsUseCase: ProductsFetchingUseCase {
             await converter.setExchangeRates(rates)
         }
         
-        return await productItemsFactory.make(from: products)
+        return await productItemsFactory.make(from: products,
+                                              convertingCode: "GBP")
     }
 }

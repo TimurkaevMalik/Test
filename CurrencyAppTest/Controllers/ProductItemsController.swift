@@ -38,7 +38,7 @@ final class ProductItemsController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    ///Это нормально пробрасывать fatalError в таком случае?
+#warning("Это нормально пробрасывать fatalError в таком случае?")
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -130,8 +130,7 @@ extension ProductItemsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        ///Можно ли писать с такими пробелами у guard и else?
-        ///Не является ли признаком плохого опыта?
+#warning("Можно ли писать с такими пробелами у guard и else? Не является ли признаком плохого опыта?")
         guard
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: TwoLabelCell.identifier,

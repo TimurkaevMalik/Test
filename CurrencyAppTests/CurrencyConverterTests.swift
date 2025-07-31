@@ -9,9 +9,7 @@ import XCTest
 @testable import CurrencyApp
 
 final class CurrencyConverterTests: XCTestCase {
-    
-    let rates: [ExchangeRate] = ExchangeRatesHolder.exchangeRates
-    
+        
     func testConvert_successfulCrossRate() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         let rates = [ExchangeRate(rate: 0.77, from: "USD", to: "GBP"),

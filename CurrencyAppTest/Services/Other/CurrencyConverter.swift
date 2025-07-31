@@ -7,8 +7,8 @@
 
 import Foundation
 
-///Допустим ли такой нейминг протокола в этом конктесте?
-///
+#warning(" Допустим ли такой нейминг протокола в этом конктесте (окончание ible)?")
+
 protocol CurrencyConvertible: AnyObject, Sendable {
     func setExchangeRates(_ rates: [ExchangeRate]) async
     func hasRates() async -> Bool
