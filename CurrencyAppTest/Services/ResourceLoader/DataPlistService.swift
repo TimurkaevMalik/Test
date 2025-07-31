@@ -10,7 +10,6 @@ import Foundation
 #warning("Правильно ли я логирую ошибки? Не слишком много кода для логирования?")
 final class DataPlistService: ResourceLoader {
     
-    private let decoder = PropertyListDecoder()
     private let bundle: Bundle
     
     init(bundle: Bundle = .main) {
@@ -30,8 +29,8 @@ final class DataPlistService: ResourceLoader {
                 let data = try Data(contentsOf: url)
                 
                 do {
-                    return try self.decoder.decode(T.self,
-                                                   from: data)
+                    return try PropertyListDecoder().decode(T.self,
+                                                            from: data)
                 } catch {
                     throw ErrorPlistService.decoding
                 }

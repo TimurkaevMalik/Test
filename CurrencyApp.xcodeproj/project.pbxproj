@@ -242,20 +242,20 @@
 			isa = PBXGroup;
 			children = (
 				BCF30E9C2E3BAD1900F2C9FA /* Insets */,
-				BCDBF2A52E33F41C00CCDAA0 /* ModelsDTO */,
-				BCDBF2B22E34F08800CCDAA0 /* ModelsDomain */,
-				BCDBF2C02E365CD600CCDAA0 /* ModelsPresentation */,
+				BCDBF2A52E33F41C00CCDAA0 /* DTO */,
+				BCDBF2B22E34F08800CCDAA0 /* Domain */,
+				BCDBF2C02E365CD600CCDAA0 /* Presentation */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BCDBF2A52E33F41C00CCDAA0 /* ModelsDTO */ = {
+		BCDBF2A52E33F41C00CCDAA0 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
 				BCDBF2B92E34FFD200CCDAA0 /* TransactionDTO.swift */,
 				BCDBF2A62E33F42B00CCDAA0 /* ExchangeRateDTO.swift */,
 			);
-			path = ModelsDTO;
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		BCDBF2A82E33F4E600CCDAA0 /* Services */ = {
@@ -278,7 +278,7 @@
 			path = ResourceLoader;
 			sourceTree = "<group>";
 		};
-		BCDBF2B22E34F08800CCDAA0 /* ModelsDomain */ = {
+		BCDBF2B22E34F08800CCDAA0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				BCDBF2C52E365EA100CCDAA0 /* Product.swift */,
@@ -286,7 +286,7 @@
 				BCDBF2B32E34F09500CCDAA0 /* ExchangeRate.swift */,
 				BCF30E9A2E3B7E4400F2C9FA /* CurrencySymbol.swift */,
 			);
-			path = ModelsDomain;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		BCDBF2BD2E36543400CCDAA0 /* UseCases */ = {
@@ -298,14 +298,14 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		BCDBF2C02E365CD600CCDAA0 /* ModelsPresentation */ = {
+		BCDBF2C02E365CD600CCDAA0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				BCF30E8E2E3A92D700F2C9FA /* MoneyItem.swift */,
 				BCDBF2C32E365CFB00CCDAA0 /* TransactionItem.swift */,
 				BCDBF2C12E365CEA00CCDAA0 /* ProductItem.swift */,
 			);
-			path = ModelsPresentation;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		BCDBF2D52E36781E00CCDAA0 /* CurrencyAppTests */ = {

@@ -9,7 +9,7 @@ import XCTest
 @testable import CurrencyApp
 
 final class CurrencyConverterTests: XCTestCase {
-        
+    
     func testConvertSuccessfulCrossRate() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         let rates = [ExchangeRate(rate: 0.77, from: "USD", to: "GBP"),
@@ -17,7 +17,11 @@ final class CurrencyConverterTests: XCTestCase {
         
         let converter = CurrencyConverter()
         await converter.setExchangeRates(rates)
-        let result = await converter.convert(from: transaction, to: "AUD")
+        
+        let result = await converter.convert(
+            amount: transaction.amount,
+            from: transaction.currency,
+            to: "AUD")
         
         XCTAssertNotNil(result)
         
@@ -37,17 +41,23 @@ final class CurrencyConverterTests: XCTestCase {
         
         let converter = CurrencyConverter()
         await converter.setExchangeRates(rates)
-        let result = await converter.convert(from: transaction, to: "GBP")
+        let result = await converter.convert(
+            amount: transaction.amount,
+            from: transaction.currency,
+            to: "GBP")
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result!, 77, accuracy: 0.0001)
     }
-    
+  
     func testConvertSameCurrencyNoConversionNeeded() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         
         let converter = CurrencyConverter()
-        let result = await converter.convert(from: transaction, to: "USD")
+        let result = await converter.convert(
+            amount: transaction.amount,
+            from: transaction.currency,
+            to: "USD")
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result!, transaction.amount)
@@ -57,7 +67,10 @@ final class CurrencyConverterTests: XCTestCase {
         let transaction = Transaction(currency: "USD", amount: 100)
         
         let converter = CurrencyConverter()
-        let result = await converter.convert(from: transaction, to: "GBP")
+        let result = await converter.convert(
+            amount: transaction.amount,
+            from: transaction.currency,
+            to: "GBP")
         
         XCTAssertNil(result)
     }

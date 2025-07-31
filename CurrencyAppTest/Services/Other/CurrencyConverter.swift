@@ -12,7 +12,8 @@ import Foundation
 protocol CurrencyConvertible: AnyObject, Sendable {
     func setExchangeRates(_ rates: [ExchangeRate]) async
     func hasRates() async -> Bool
-    func convert(from transaction: Transaction,
+    func convert(amount: Double,
+                 from initialCurrency: String,
                  to targetCurrency: String) async -> Double?
 }
 
@@ -48,27 +49,26 @@ final actor CurrencyConverter: CurrencyConvertible {
     ///   O(n), где `n` — количество доступных направлений конверсии из исходной валюты (`exchangeRates[from]`).
     ///   Все операции внутри цикла (сравнение ключа, lookup вложенного словаря) выполняются за O(1).
     ///
-    func convert(from transaction: Transaction,
+    func convert(amount: Double,
+                 from initialCurrency: String,
                  to targetCurrency: String) async -> Double? {
         
-        guard transaction.currency != targetCurrency else {
-            return transaction.amount
+        guard initialCurrency != targetCurrency else {
+            return amount
         }
-        
-        let from = transaction.currency
-        
-        for (intermediateCurrency, directRate) in exchangeRates[from] ?? [:] {
+                
+        for (intermediateCurrency, directRate) in exchangeRates[initialCurrency] ?? [:] {
             
             if intermediateCurrency == targetCurrency {
                 
-                return transaction.amount * Double(directRate)
+                return amount * Double(directRate)
             }
             
             if let finalRate = rate(from: intermediateCurrency,
                                     to: targetCurrency) {
                 
                 let crossRate = directRate * finalRate
-                return transaction.amount * Double(crossRate)
+                return amount * Double(crossRate)
             }
         }
         

@@ -105,8 +105,12 @@ private extension ProductItemsFactory {
         
         let convertingCode = ConversionEnvironment.convertingCode
         
-        guard let newAmount = await self.converter.convert(
-            from: transaction, to: convertingCode) else { return nil }
+        guard
+            let newAmount = await self.converter.convert(
+                amount: transaction.amount,
+                from: transaction.currency,
+                to: convertingCode)
+        else { return nil }
         
         let newTransaction = Transaction(currency: convertingCode,
                                          amount: newAmount)

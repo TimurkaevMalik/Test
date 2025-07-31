@@ -100,10 +100,9 @@ private extension TransactionItemsController {
                                                         right: 0)
         
         view.attachOnTopSafeArea(subview: totalCountLabel)
+        totalCountLabel.setSize(height: 24)
         
         NSLayoutConstraint.activate([
-            totalCountLabel.heightAnchor.constraint(equalToConstant: 24),
-            
             transactionsTableView.topAnchor.constraint(equalTo: totalCountLabel.bottomAnchor),
             transactionsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             transactionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .leftMargin),
