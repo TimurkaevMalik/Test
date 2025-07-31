@@ -11,6 +11,11 @@ import Foundation
 final class DataPlistService: ResourceLoader {
     
     private let decoder = PropertyListDecoder()
+    private let bundle: Bundle
+    
+    init(bundle: Bundle = .main) {
+        self.bundle = bundle
+    }
     
     func load<T>(from resource: ResourceFile) async throws -> T
     where T: Decodable & Sendable {
@@ -37,7 +42,8 @@ final class DataPlistService: ResourceLoader {
     }
     
     private func resolveURL(for resource: ResourceFile) -> URL? {
-        return Bundle.main.url(forResource: resource.name.rawValue,
-                               withExtension: resource.fileExtension.rawValue)
+        return bundle.url(
+            forResource: resource.name.rawValue,
+            withExtension: resource.fileExtension.rawValue)
     }
 }

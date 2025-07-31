@@ -39,6 +39,7 @@ final class ProductItemsController: UIViewController {
     }
     
 #warning("Это нормально пробрасывать fatalError в таком случае?")
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -95,29 +96,6 @@ final class ProductItemsController: UIViewController {
         alert.addActions([cancelAction, repeatAction])
         present(alert, animated: true)
     }
-    
-    private func setupUI() {
-        view.addSubview(productsTableView)
-        view.addSubview(blurLoaderView)
-        
-        productsTableView.tableHeaderView = UIView(frame: .zero)
-        productsTableView.separatorInset = UIEdgeInsets(top: 0,
-                                                        left: 0,
-                                                        bottom: 0,
-                                                        right: 0)
-        
-        NSLayoutConstraint.activate([
-            productsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            productsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            productsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .leftMargin),
-            productsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            blurLoaderView.topAnchor.constraint(equalTo: view.topAnchor),
-            blurLoaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            blurLoaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            blurLoaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-    }
 }
 
 extension ProductItemsController: UITableViewDataSource {
@@ -158,5 +136,23 @@ extension ProductItemsController: UITableViewDelegate {
             onProductSelected(product)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+private extension ProductItemsController {
+    func setupUI() {
+        view.addSubview(productsTableView)
+        view.addSubview(blurLoaderView)
+        
+        productsTableView.tableHeaderView = UIView(frame: .zero)
+        productsTableView.separatorInset = UIEdgeInsets(top: 0,
+                                                        left: 0,
+                                                        bottom: 0,
+                                                        right: 0)
+        
+        let constants = EdgeInsets(horizontal: HorizontalInsets(left: .leftMargin))
+        view.fillSafeArea(with: productsTableView,
+                          edgeInsets: constants)
+        view.fillView(with: blurLoaderView)
     }
 }

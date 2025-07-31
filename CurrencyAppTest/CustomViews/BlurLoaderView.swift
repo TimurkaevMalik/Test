@@ -50,25 +50,18 @@ final class BlurLoaderView: UIView {
             self.activityIndicator.stopAnimating()
         })
     }
-    
-    
-    private func setupUI() {
+}
+
+private extension BlurLoaderView {
+    func setupUI() {
         addSubview(visualEffectView)
         addSubview(activityIndicator)
         activityIndicator.backgroundColor = .white
         activityIndicator.layer.masksToBounds = true
         activityIndicator.layer.cornerRadius = 8
         
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
-            activityIndicator.widthAnchor.constraint(equalToConstant: 80),
-            activityIndicator.heightAnchor.constraint(equalToConstant: 80),
-            
-            visualEffectView.topAnchor.constraint(equalTo: topAnchor),
-            visualEffectView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            visualEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            visualEffectView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        activityIndicator.setSize(width: 80, height: 80)
+        center(subview: activityIndicator)
+        fillView(with: visualEffectView)
     }
 }

@@ -43,8 +43,10 @@ final class TwoLabelCell: UITableViewCell {
         leftLabel.text = leftText
         rightLabel.text = rightText
     }
-    
-    private func setupUI() {
+}
+
+private extension TwoLabelCell {
+    func setupUI() {
         contentView.addSubview(leftLabel)
         contentView.addSubview(rightLabel)
         

@@ -10,7 +10,7 @@ import XCTest
 
 final class CurrencyConverterTests: XCTestCase {
         
-    func testConvert_successfulCrossRate() async {
+    func testConvertSuccessfulCrossRate() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         let rates = [ExchangeRate(rate: 0.77, from: "USD", to: "GBP"),
                      ExchangeRate(rate: 0.83, from: "GBP", to: "AUD")]
@@ -31,7 +31,7 @@ final class CurrencyConverterTests: XCTestCase {
         XCTAssertEqual(result!, 63.91, accuracy: 0.0001)
     }
    
-    func testConvert_successful_withoutCrossRate() async {
+    func testConvertSuccessfulWithoutCrossRate() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         let rates = [ExchangeRate(rate: 0.77, from: "USD", to: "GBP")]
         
@@ -43,7 +43,7 @@ final class CurrencyConverterTests: XCTestCase {
         XCTAssertEqual(result!, 77, accuracy: 0.0001)
     }
     
-    func testConvert_sameCurrency_noConversionNeeded() async {
+    func testConvertSameCurrencyNoConversionNeeded() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         
         let converter = CurrencyConverter()
@@ -53,7 +53,7 @@ final class CurrencyConverterTests: XCTestCase {
         XCTAssertEqual(result!, transaction.amount)
     }
     
-    func testConvert_noBindingRate_returnsNil() async {
+    func testConvertNoBindingRateReturnsNil() async {
         let transaction = Transaction(currency: "USD", amount: 100)
         
         let converter = CurrencyConverter()

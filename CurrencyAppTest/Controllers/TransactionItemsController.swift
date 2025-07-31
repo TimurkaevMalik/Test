@@ -46,6 +46,7 @@ final class TransactionItemsController: UIViewController {
         title = "Transactions for \(vm.productItem.sku)"
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -54,30 +55,6 @@ final class TransactionItemsController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-    }
-    
-    private func setupUI() {
-        view.addSubview(transactionsTableView)
-        view.addSubview(totalCountLabel)
-
-        transactionsTableView.tableHeaderView = UIView(frame: .zero)
-        transactionsTableView.allowsSelection = false
-        transactionsTableView.separatorInset = UIEdgeInsets(top: 0,
-                                                        left: 0,
-                                                        bottom: 0,
-                                                        right: 0)
-        
-        NSLayoutConstraint.activate([
-            totalCountLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            totalCountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            totalCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            totalCountLabel.heightAnchor.constraint(equalToConstant: 24),
-            
-            transactionsTableView.topAnchor.constraint(equalTo: totalCountLabel.bottomAnchor),
-            transactionsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            transactionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .leftMargin),
-            transactionsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
     }
 }
 
@@ -107,5 +84,30 @@ extension TransactionItemsController: UITableViewDataSource {
         cell.configure(leftText: leftText, rightText: rightText)
         
         return cell
+    }
+}
+
+private extension TransactionItemsController {
+    func setupUI() {
+        view.addSubview(transactionsTableView)
+        view.addSubview(totalCountLabel)
+
+        transactionsTableView.tableHeaderView = UIView(frame: .zero)
+        transactionsTableView.allowsSelection = false
+        transactionsTableView.separatorInset = UIEdgeInsets(top: 0,
+                                                        left: 0,
+                                                        bottom: 0,
+                                                        right: 0)
+        
+        view.attachOnTopSafeArea(subview: totalCountLabel)
+        
+        NSLayoutConstraint.activate([
+            totalCountLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            transactionsTableView.topAnchor.constraint(equalTo: totalCountLabel.bottomAnchor),
+            transactionsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            transactionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .leftMargin),
+            transactionsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }
