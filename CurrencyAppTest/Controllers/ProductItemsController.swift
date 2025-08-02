@@ -132,10 +132,7 @@ extension ProductItemsController: UITableViewDataSource {
 extension ProductItemsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        
-        if let product = vm.productItems[safe: indexPath.row] {
-            onProductSelected(product)
-        }
+        onProductSelected(vm.productItems[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

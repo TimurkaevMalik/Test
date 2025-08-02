@@ -7,7 +7,7 @@
 
 import Foundation
 
-#warning("Не является ли проблемой, если держать enum в папке с названием ModelsDomain?")
+#warning("Не является ли проблемой, если держать enum в папке с названием CommonModels?")
 
 enum CurrencySymbol: String {
     case usd = "$"

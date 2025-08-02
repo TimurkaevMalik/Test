@@ -21,7 +21,6 @@
 		BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4888052E12D59E0076F21F /* ProductItemsController.swift */; };
 		BCAD8ECF2E37EA5E00C9CCA5 /* ProductItemsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */; };
 		BCAD8ED22E37F9B200C9CCA5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ED12E37F9A700C9CCA5 /* ProductCell.swift */; };
-		BCAD8ED62E38033500C9CCA5 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAD8ED52E38032700C9CCA5 /* Array+Ext.swift */; };
 		BCDBF29A2E33E68C00CCDAA0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */; };
 		BCDBF29E2E33F04800CCDAA0 /* transactions.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29D2E33F04800CCDAA0 /* transactions.plist */; };
 		BCDBF29F2E33F04800CCDAA0 /* rates.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCDBF29C2E33F04800CCDAA0 /* rates.plist */; };
@@ -51,6 +50,7 @@
 		BCF30EA22E3BB71500F2C9FA /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF30EA12E3BB71500F2C9FA /* EdgeInsets.swift */; };
 		BCF30EA42E3BB72400F2C9FA /* HorizontalInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF30EA32E3BB72400F2C9FA /* HorizontalInsets.swift */; };
 		BCF30EA62E3BB73800F2C9FA /* XYOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF30EA52E3BB73800F2C9FA /* XYOffset.swift */; };
+		BCF30EA92E3E0F3900F2C9FA /* ExchangeRate+ExchangeRateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF30EA82E3E0F3800F2C9FA /* ExchangeRate+ExchangeRateDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,6 @@
 		BC4888052E12D59E0076F21F /* ProductItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsController.swift; sourceTree = "<group>"; };
 		BCAD8ECE2E37EA5C00C9CCA5 /* ProductItemsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsVM.swift; sourceTree = "<group>"; };
 		BCAD8ED12E37F9A700C9CCA5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		BCAD8ED52E38032700C9CCA5 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		BCDBF2992E33E68300CCDAA0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BCDBF29C2E33F04800CCDAA0 /* rates.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rates.plist; sourceTree = "<group>"; };
 		BCDBF29D2E33F04800CCDAA0 /* transactions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = transactions.plist; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		BCF30EA12E3BB71500F2C9FA /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
 		BCF30EA32E3BB72400F2C9FA /* HorizontalInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalInsets.swift; sourceTree = "<group>"; };
 		BCF30EA52E3BB73800F2C9FA /* XYOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYOffset.swift; sourceTree = "<group>"; };
+		BCF30EA82E3E0F3800F2C9FA /* ExchangeRate+ExchangeRateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExchangeRate+ExchangeRateDTO.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +206,6 @@
 				BCF30E9F2E3BB4EA00F2C9FA /* UIView+Ext.swift */,
 				BC4019722E3913040011F29D /* CGFloat+Ext.swift */,
 				BC4019662E38C3240011F29D /* UIAlertController+Ext.swift */,
-				BCAD8ED52E38032700C9CCA5 /* Array+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +244,7 @@
 				BCDBF2A52E33F41C00CCDAA0 /* DTO */,
 				BCDBF2B22E34F08800CCDAA0 /* Domain */,
 				BCDBF2C02E365CD600CCDAA0 /* Presentation */,
+				BCF30EA72E3E0F1500F2C9FA /* CommonModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 				BCDBF2C52E365EA100CCDAA0 /* Product.swift */,
 				BCDBF2BB2E35010300CCDAA0 /* Transaction.swift */,
 				BCDBF2B32E34F09500CCDAA0 /* ExchangeRate.swift */,
-				BCF30E9A2E3B7E4400F2C9FA /* CurrencySymbol.swift */,
+				BCF30EA82E3E0F3800F2C9FA /* ExchangeRate+ExchangeRateDTO.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -342,6 +342,14 @@
 				BCF30EA12E3BB71500F2C9FA /* EdgeInsets.swift */,
 			);
 			path = Insets;
+			sourceTree = "<group>";
+		};
+		BCF30EA72E3E0F1500F2C9FA /* CommonModels */ = {
+			isa = PBXGroup;
+			children = (
+				BCF30E9A2E3B7E4400F2C9FA /* CurrencySymbol.swift */,
+			);
+			path = CommonModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,7 +488,6 @@
 				BC4019732E3913090011F29D /* CGFloat+Ext.swift in Sources */,
 				BC4019672E38C3250011F29D /* UIAlertController+Ext.swift in Sources */,
 				BCF30EA42E3BB72400F2C9FA /* HorizontalInsets.swift in Sources */,
-				BCAD8ED62E38033500C9CCA5 /* Array+Ext.swift in Sources */,
 				BCDBF2C22E365CEA00CCDAA0 /* ProductItem.swift in Sources */,
 				BC4888062E12D59E0076F21F /* ProductItemsController.swift in Sources */,
 				BCDBF2B62E34F26900CCDAA0 /* ErrorPlistService.swift in Sources */,
@@ -488,6 +495,7 @@
 				BC4019712E39036D0011F29D /* TransactionItemsVM.swift in Sources */,
 				BCF30EA02E3BB4F700F2C9FA /* UIView+Ext.swift in Sources */,
 				BC40196F2E3900780011F29D /* TransactionItemsController.swift in Sources */,
+				BCF30EA92E3E0F3900F2C9FA /* ExchangeRate+ExchangeRateDTO.swift in Sources */,
 				BCF30E912E3A9DC300F2C9FA /* ProductItemsFactory.swift in Sources */,
 				BCDBF2A32E33F3B300CCDAA0 /* RatesRepository.swift in Sources */,
 			);

@@ -12,15 +12,3 @@ struct ExchangeRate {
     let from: String
     let to: String
 }
-
-extension ExchangeRate {
-    init?(dto: ExchangeRateDTO) {
-        if let rateValue = Float(dto.rate) {
-            rate = rateValue
-            from = dto.from
-            to = dto.to
-        } else {
-            return nil
-        }
-    }
-}

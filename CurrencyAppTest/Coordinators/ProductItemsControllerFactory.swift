@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 protocol ProductItemsControllerFactoryProtocol {
-#warning("почему наследник не наследует async аннотацию, и при вызове метода из @MainActor не приходится писать await")
     func make() async -> ProductItemsController
 }
 
