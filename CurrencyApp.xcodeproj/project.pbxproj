@@ -98,8 +98,8 @@
 		BCDBF2C52E365EA100CCDAA0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		BCDBF2D72E367A4F00CCDAA0 /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		BCDBF2DC2E368D7E00CCDAA0 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
-		BCF30E8C2E3A570E00F2C9FA /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCF30E8D2E3A570E00F2C9FA /* CurrencyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCF30E8C2E3A570E00F2C9FA /* CurrencyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = CurrencyApp.app; path = "/Users/malik_timurkaev/Documents/App.Folder/Test/build/Debug-iphoneos/CurrencyApp.app"; sourceTree = "<absolute>"; };
+		BCF30E8D2E3A570E00F2C9FA /* CurrencyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyAppTests.xctest; path = "/Users/malik_timurkaev/Documents/App.Folder/Test/build/Debug-iphoneos/CurrencyApp.app/PlugIns/CurrencyAppTests.xctest"; sourceTree = "<absolute>"; };
 		BCF30E8E2E3A92D700F2C9FA /* MoneyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyItem.swift; sourceTree = "<group>"; };
 		BCF30E902E3A9DC300F2C9FA /* ProductItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemsFactory.swift; sourceTree = "<group>"; };
 		BCF30E942E3B7DD300F2C9FA /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
@@ -153,8 +153,6 @@
 			children = (
 				BC4887FD2E12D42D0076F21F /* CurrencyAppTest */,
 				BCDBF2D52E36781E00CCDAA0 /* CurrencyAppTests */,
-				BCF30E8C2E3A570E00F2C9FA /* CurrencyApp.app */,
-				BCF30E8D2E3A570E00F2C9FA /* CurrencyAppTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
